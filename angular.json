@@ -24,9 +24,12 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+
+              "styles": [
+                "src/styles/sass/main.scss",
+                "src/styles/styles.css"
+              ],
+
             "scripts": []
           },
           "configurations": {
