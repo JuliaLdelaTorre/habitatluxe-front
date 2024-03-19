@@ -1,0 +1,39 @@
+@import '../../styles/sass/colors';
+@import '../../styles/sass/footer';
+@import '../../styles/sass/mixins';
+
+
+.nosotros {
+  background-color: $color-bckg;
+  height: 300px;
+  &__title {
+     @include section-title;
+     color: $color-hf;
+  }
+  &__column {
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.nosotros__content {
+  // una columna junto a la otra
+  display: flex;
+
+}
+
+.nosotros__column {
+  // ocupa el 40% del espacio
+  flex: 0 0 40%;
+  // padding por la izquierda y derecha
+  padding: 1em;
+  margin-left: 2em;
+  text-align: justify;
+  &--left {
+    border-right: 1px solid $color-hf;
+  }
+  &--right {
+    border-left: 1px solid $color-hf;
+  }
+}
