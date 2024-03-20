@@ -1,0 +1,19 @@
+@mixin button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+
+  &--orange {
+    background: orange;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.5); // brillo
+
+    &:hover {
+      background: darken(orange, 10%); // oscurece el fondo
+      box-shadow: 0 5px 15px rgba(255, 165, 0, 0.7); // aumenta el brillo
+    }
+  }
+}
