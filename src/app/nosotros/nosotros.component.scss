@@ -3,16 +3,50 @@
 @import '../../styles/sass/mixins';
 
 
-.nosotros {
-  background-color: $color-bckg;
-  height: 300px;
+header {
+  background-color: $secondary;
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
 
+}
+
+.nosotros__logo {
+  padding: 50px;
+  margin-left: 50px;
+  align-items: center;
+}
+
+.nosotros__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  margin-right: 50px;
+  gap: 2em;
+
+  a {
+    color: $primary;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+
+
+    &:hover {
+      color: darken($primary, 30%)
+    }
+  }
+}
+
+.nosotros {
+  background-color: $primary;
   &__title {
     @include section-title;
-    color: $color-hf;
+    color: $secondary;
     margin-top: 10px;
   }
-
   &__column--right {
     p {
       margin-bottom: 20px;
@@ -25,13 +59,20 @@
 }
 
 .nosotros__column--left {
-  // ocupa el 40% del espacio
-  flex: 0 0 40%;
+  // ocupa el 45% del espacio
+  flex: 0 0 45%;
   // padding por la izquierda y derecha
   padding: 1em;
   margin-left: 2em;
   text-align: justify;
+}
 
+.nosotros__column--right {
+  // ocupa el 45% del espacio
+  flex: 0 0 45%;
+  // padding por la izquierda y derecha
+  padding: 1em;
+  text-align: justify;
 }
 
 
@@ -41,23 +82,58 @@
 }
 
 .nosotros__column--details {
-   display: flex;
+  display: flex;
   flex-direction: column;
   flex: 0 0 33.3333%;
   padding: 1em;
   text-align: center;
   align-items: center;
   gap: 1em;
+  padding: 2em;
+}
+
+// Responsive design
+
+// Estilos para pantallas grandes
+.nosotros__intro-container {
+  display: flex;
+
+  .nosotros__column--left,
+  .nosotros__column--right {
+    width: 50%;
+  }
+}
+
+// Estilos para pantallas pequeñas
+@media (max-width: 768px) {
+  .nosotros__intro-container {
+    flex-direction: column;
+
+    .nosotros__column--left,
+    .nosotros__column--right {
+      width: 100%;
+    }
+  }
+
+  .nosotros__nav {
+    flex-direction: column;
+    align-items: center;
+    a {
+      margin-bottom: 1em;
+    }
+  }
+
+  .nosotros__details-container {
+    flex-direction: column;
+
+    .nosotros__column--details {
+      margin-bottom: 2em;
+    }
+  }
+
+  .footer__parag {
+    text-align: center;
+  }
 }
 
 
-.iconos {
-
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1em;
-  width: 50px;
-  height: 50px;
-  margin-right: 1em;
-
-}

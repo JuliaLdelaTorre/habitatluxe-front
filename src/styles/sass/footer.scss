@@ -1,0 +1,30 @@
+footer {
+  display: flex;
+  background-color: $secondary;
+  width: 100vw;
+  height: 200px;
+  margin-top: 2em;
+
+
+  .nosotros__nav {
+    display: flex;
+    align-items:start;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-top: 10px;
+    gap: 2em;
+
+  }
+
+  .footer__parag {
+    display: flex;
+    color: $primary;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: italic;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+  }
+
+}
