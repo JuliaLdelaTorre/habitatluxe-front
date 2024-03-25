@@ -7,13 +7,21 @@
 @import 'mixins';
 
 
-body {
-  font-family: 'Lato Regular', sans-serif;
-}
+//variables
+$title-font: 'Lato Bold', sans-serif;
+$body-font: 'Lato Regular', sans-serif;
+
+
+
 
 h1, h2 {
-  font-family: 'Lato Bold', sans-serif;
+  font-family: $title-font;
 }
+
+main, p{
+  font-family: $body-font;
+}
+
 
 .iconos {
 
