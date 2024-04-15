@@ -1,87 +1,82 @@
 <!-- header -->
+<div i18n="@@headerText">This is the header</div>
 <header class="nosotros__header">
-  <img class="nosotros__logo" src="../../assets/images/logo.png" alt="Logo">
+  <img class="nosotros__logo" src="../../assets/images/logo.png" alt="Logo" i18n-alt>
+
 
   <nav class="nosotros__nav" role="navigation">
-    <a routerLink="/">Inicio</a>
-    <a routerLink="/properties">Anuncios</a>
-    <a routerLink="/blog">Blog</a>
-    <a routerLink="/aboutUs">Nosotros</a>
-    <a routerLink="/contact">Contacto</a>
-
+    <a routerLink="/" i18n="@@inicioLink">Inicio</a>
+    <a routerLink="/properties" i18n="@@anunciosLink">Anuncios</a>
+    <a routerLink="/blog" i18n="@@blogLink">Blog</a>
+    <a routerLink="/aboutUs" i18n="@@nosotrosLink">Nosotros</a>
+    <a routerLink="/contact" i18n="@@contactoLink">Contacto</a>
   </nav>
 </header>
 
 <!-- main -->
 <main>
-<div class="nosotros">
-  <h1 class="nosotros__title">Sobre Nosotros</h1>
-  <div class="nosotros__intro-container">
-    <div class="nosotros__column--left">
-      <!-- <img src="../../assets/images/nosotros.webp" alt="Imagen"> -->
-      <video class="nosotros__video" autoplay muted>
-        <source src="../../assets/video/nosotros.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-     <a routerLink="https://www.freepik.es">Video de freepik</a>
+  <div class="nosotros">
+    <h1 class="nosotros__title" i18n="@@nosotrosText">Sobre Nosotros</h1>
+    <div class="nosotros__intro-container">
+      <div class="nosotros__column--left">
+        <!-- <img src="../../assets/images/nosotros.webp" alt="Imagen"> -->
+        <video class="nosotros__video" autoplay muted>
+          <source src="../../assets/video/nosotros.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <a routerLink="https://www.freepik.es" i18n="@@videoLink">Video de freepik</a>
+      </div>
+      <div class="nosotros__column--right">
+        <p i18n="@@experienciaText">25 Años de experiencia</p>
+        <p i18n="@@descripcionText">Somos una inmobiliaria de lujo con una pasión por conectar a las personas con las propiedades de sus sueños.
+          Con una experiencia de más de 20 años en el mercado inmobiliario de lujo, nos enorgullece ofrecer un servicio
+          excepcional y una atención personalizada a cada uno de nuestros clientes.</p>
+        <p i18n="@@esfuerzoText">En nuestra inmobiliaria, nos esforzamos por superar las expectativas de nuestros clientes y ofrecer un
+          servicio de primera clase. Nuestro equipo de expertos en bienes raíces está comprometido a brindar un servicio
+          excepcional y una atención personalizada a cada uno de nuestros clientes.</p>
+        <p i18n="@@equipoText">Nuestro equipo de expertos tiene un profundo conocimiento del mercado inmobiliario y se dedica a entender y
+          satisfacer las necesidades individuales de cada cliente. Ya sea que estés buscando comprar, vender o alquila una
+          propiedad de lujo, estamos aquí para ayudarte en cada paso del camino.</p>
+      </div>
+    </div><!-- nosotros__container -->
 
-    </div>
-    <div class="nosotros__column--right">
-      <p>25 Años de experiencia</p>
-      <p>Somos una inmobiliaria de lujo con una pasión por conectar a las personas con las propiedades de sus sueños.
-        Con una experiencia de más de 20 años en el mercado inmobiliario de lujo, nos enorgullece ofrecer un servicio
-        excepcional y una atención personalizada a cada uno de nuestros clientes.</p>
-      <p>En nuestra inmobiliaria, nos esforzamos por superar las expectativas de nuestros clientes y ofrecer un
-        servicio de primera clase. Nuestro equipo de expertos en bienes raíces está comprometido a brindar un servicio
-        excepcional y una atención personalizada a cada uno de nuestros clientes.</p>
-      <p>Nuestro equipo de expertos tiene un profundo conocimiento del mercado inmobiliario y se dedica a entender y
-        satisfacer las necesidades individuales de cada cliente. Ya sea que estés buscando comprar, vender o alquila una
-        propiedad de lujo, estamos aquí para ayudarte en cada paso del camino.</p>
-    </div>
-  </div><!-- nosotros__container -->
+    <h2 class="nosotros__title" i18n="@@masNosotrosText">Más sobre nosotros</h2>
+    <div class="nosotros__details-container">
 
+      <div class="nosotros__column--details">
+        <img class="iconos" src="../../assets/images/icono1.svg" alt="seguridad" i18n-alt>
+        <h3 i18n="@@seguridadTitle">SEGURIDAD</h3>
+        <p i18n="@@seguridadText">En nuestra inmobiliaria, la seguridad de nuestros clientes es nuestra máxima prioridad. Nos aseguramos de que
+          todas nuestras propiedades cumplan con los más altos estándares de seguridad y trabajamos con abogados expertos
+          para garantizar transacciones seguras y sin problemas.</p>
+      </div>
 
+      <div class="nosotros__column--details">
+        <img class="iconos" src="../../assets/images/icono2.svg" alt="tiempo" i18n-alt>
+        <h3 i18n="@@tiempoTitle">A TIEMPO</h3>
+        <p i18n="@@tiempoText">Sabemos que tu tiempo es valioso. Por eso, nos comprometemos a trabajar de manera eficiente para encontrar la
+          propiedad perfecta para ti o vender tu propiedad en el menor tiempo posible. Nuestro equipo de expertos está
+          siempre disponible para responder a tus preguntas y guiarte a través del proceso.</p>
+      </div>
 
-
-  <h2 class="nosotros__title">Más sobre nosotros</h2>
-  <div class="nosotros__details-container">
-
-    <div class="nosotros__column--details">
-      <img class="iconos" src="../../assets/images/icono1.svg" alt="seguridad">
-      <h3>SEGURIDAD</h3>
-      <p>En nuestra inmobiliaria, la seguridad de nuestros clientes es nuestra máxima prioridad. Nos aseguramos de que
-        todas nuestras propiedades cumplan con los más altos estándares de seguridad y trabajamos con abogados expertos
-        para garantizar transacciones seguras y sin problemas.</p>
-    </div>
-
-    <div class="nosotros__column--details">
-      <img class="iconos" src="../../assets/images/icono2.svg" alt="tiempo">
-      <h3>A TIEMPO</h3>
-      <p>Sabemos que tu tiempo es valioso. Por eso, nos comprometemos a trabajar de manera eficiente para encontrar la
-        propiedad perfecta para ti o vender tu propiedad en el menor tiempo posible. Nuestro equipo de expertos está
-        siempre disponible para responder a tus preguntas y guiarte a través del proceso.</p>
-    </div>
-
-    <div class="nosotros__column--details">
-      <img class="iconos" src="../../assets/images/icono3.svg" alt="precio">
-      <h3>PRECIO</h3>
-      <p>Entendemos que el precio es un factor importante en la compra o venta de una propiedad. Nos esforzamos por
-        ofrecer propiedades de lujo a precios competitivos y trabajamos contigo para encontrar la mejor opción que se
-        ajuste a tu presupuesto</p>
-    </div>
-  </div> <!-- nosotros -->
-</div>
-
+      <div class="nosotros__column--details">
+        <img class="iconos" src="../../assets/images/icono3.svg" alt="precio" i18n-alt>
+        <h3 i18n="@@precioTitle">PRECIO</h3>
+        <p i18n="@@precioText">Entendemos que el precio es un factor importante en la compra o venta de una propiedad. Nos esforzamos por
+          ofrecer propiedades de lujo a precios competitivos y trabajamos contigo para encontrar la mejor opción que se
+          ajuste a tu presupuesto</p>
+      </div>
+    </div> <!-- nosotros -->
+  </div>
 
   <footer class="">
     <nav class="nosotros__nav" role="navigation">
-      <a routerLink="#">Anuncios</a>
-      <a routerLink="#">Blog</a>
-      <a routerLink="#">Nosotros</a>
-      <a routerLink="#">Contacto</a>
+      <a routerLink="/properties" i18n="@@anunciosLink">Anuncios</a>
+      <a routerLink="/blog" i18n="@@blogLink">Blog</a>
+      <a routerLink="/aboutUs" i18n="@@nosotrosLink">Nosotros</a>
+      <a routerLink="/contact" i18n="@@contactoLink">Contacto</a>
     </nav>
 
-    <div class="footer__parag">Habitat Luxe "Encuentra tu espacio ideal"</div>
-
+    <div class="footer__parag" i18n="@@footerText">Habitat Luxe "Encuentra tu espacio ideal"</div>
   </footer>
 </main>
