@@ -87,6 +87,14 @@
           <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="sobreNosotrosText" datatype="html">
+        <source>Sobre Nosotros</source>
+        <target>About Us</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/aboutUs/aboutUs.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="experienciaText" datatype="html">
         <source>25 Años de experiencia</source>
         <target>25 Years of Experience</target>
