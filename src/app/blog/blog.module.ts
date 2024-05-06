@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { BlogRoutingModule } from './routing/blog-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,6 +14,7 @@ import { BlogRoutingModule } from './routing/blog-routing.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     BlogRoutingModule
   ]
 })
