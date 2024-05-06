@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Blog } from '../interface/blog.interface';
+import { environment } from 'src/app/environments/environments';
 
 @Injectable({ providedIn: 'root' })
 export class BlogService {
 
-  baseUrl = 'http://localhost:3000';
+  // baseUrl = 'http://localhost:3000';
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
