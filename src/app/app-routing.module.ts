@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   // inicio de la aplicación (landing).
   { path: '', component: HomeComponent },
+  // ruta a la página "Home."
+  { path: 'home', component: HomeComponent},
   // ruta a la página "Nosotros."
   { path: 'aboutUs', component: AboutUsComponent},
 

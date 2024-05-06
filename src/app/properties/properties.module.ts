@@ -7,10 +7,7 @@ import { PropertyPageComponent } from './property-page/property-page.component';
 
 
 @NgModule({
-  declarations: [
-    ListPageComponent,
-    PropertyPageComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule
   ]
