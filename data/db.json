@@ -1,0 +1,87 @@
+{
+  "message": "Lista de blog",
+  "statusCode": 200,
+  "error": false,
+  "blog": [
+      {
+          "id": 1,
+          "title": "Ideas para decorar tu terraza en verano",
+          "content": "En este artículo, encontrarás consejos prácticos y creativos para decorar cada espacio de tu hogar. Desde la elección de colores hasta la distribución del mobiliario, descubre cómo transformar tu casa en un lugar acogedor y lleno de estilo.",
+          "category": "decoración",
+          "img": "assets/blogImages/terrazaMadera.jpg",
+          "author": "admin",
+          "created_at": "2024-05-05T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 2,
+          "title": "Cómo elegir la mejor ubicación para tu nueva casa",
+          "content": "Al buscar una nueva casa, la ubicación es un factor crucial a considerar. En este artículo, te ofrecemos consejos e ideas para seleccionar la ubicación ideal para tu próximo hogar. Desde la proximidad a servicios hasta el entorno y la calidad de vida, analiza todos los aspectos antes de tomar una decisión.",
+          "category": "inmobiliaria",
+          "img": "assets/blogImages/vender.jpg",
+          "author": "admin",
+          "created_at": "2024-05-04T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 3,
+          "title": "Tendencias de diseño de interiores para el 2024",
+          "content": "Descubre las últimas tendencias en diseño de interiores que marcarán el año 2024. Desde paletas de colores hasta materiales y estilos de mobiliario, mantente al día con lo último en decoración para tu hogar.",
+          "category": "decoración",
+          "img": "assets/blogImages/ideas.jpg",
+          "author": "admin",
+          "created_at": "2024-05-03T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 4,
+          "title": "Consejos para vender tu casa rápidamente",
+          "content": "En verano, la terraza se convierte en el lugar perfecto para disfrutar del buen tiempo y relajarse al aire libre. En este artículo, te ofrecemos ideas y consejos para decorar tu terraza y crear un espacio acogedor y funcional. Desde la elección de muebles hasta la iluminación y la vegetación, descubre cómo transformar tu terraza en un oasis de tranquilidad y estilo.",
+          "category": "summer",
+          "img": "assets/blogImages/consejos.jpg",
+          "author": "admin",
+          "created_at": "2024-05-02T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 5,
+          "title": "Ideas para decorar tu terraza en verano",
+          "content": "En verano, la terraza se convierte en el lugar perfecto para disfrutar del buen tiempo y relajarse al aire libre. En este artículo, te ofrecemos ideas y consejos para decorar tu terraza y crear un espacio acogedor y funcional. Desde la elección de muebles hasta la iluminación y la vegetación, descubre cómo transformar tu terraza en un oasis de tranquilidad y estilo.",
+          "category": "summer",
+          "img": "assets/blogImages/terrazaMadera.jpg",
+          "author": "admin",
+          "created_at": "2024-05-01T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 6,
+          "title": "Consejos para decorar tu hogar en primavera",
+          "content": "La primavera es una época ideal para renovar la decoración de tu hogar y darle un toque fresco y colorido. En este artículo, te ofrecemos consejos prácticos y creativos para decorar cada espacio de tu casa en primavera. Desde la elección de textiles hasta la incorporación de plantas y flores, descubre cómo dar la bienvenida a la primavera en tu hogar.",
+          "category": "primavera",
+          "img": "assets/blogImages/primavera.jpg",
+          "author": "admin",
+          "created_at": "2024-04-30T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 7,
+          "title": "Cómo decorar tu hogar en invierno",
+          "content": "El invierno es una temporada perfecta para crear un ambiente cálido y acogedor en tu hogar. En este artículo, te ofrecemos consejos y sugerencias para decorar cada espacio de tu casa durante el invierno. Desde la elección de colores cálidos hasta la incorporación de textiles y elementos decorativos, descubre cómo transformar tu hogar en un refugio de confort en los meses fríos.",
+          "category": "invierno",
+          "img": "assets/blogImages/invierno.jpg",
+          "author": "admin",
+          "created_at": "2024-04-29T22:00:00.000000Z",
+          "updated_at": null
+      },
+      {
+          "id": 8,
+          "title": "Decorar tu hogar en otoño",
+          "content": "El otoño es una estación perfecta para renovar la decoración de tu hogar y darle un toque cálido y acogedor. En este artículo, te ofrecemos consejos prácticos y creativos para decorar cada espacio de tu casa en otoño. Desde la elección de colores hasta la incorporación de elementos naturales, descubre cómo dar la bienvenida al otoño en tu hogar.",
+          "category": "otoño",
+          "img": "assets/blogImages/fall.jpg",
+          "author": "admin",
+          "created_at": "2024-04-28T22:00:00.000000Z",
+          "updated_at": null
+      }
+  ]
+}
