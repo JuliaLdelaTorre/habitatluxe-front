@@ -13,10 +13,18 @@ export class BlogPageComponent implements OnInit{
 
   constructor( private blogService: BlogService ) { }
 
+  // array
+  // ngOnInit(): void {
+  //   this.blogService.getBlog()
+  //   .subscribe( blog => this.blog = blog)
+  // }
+
+//objeto
   ngOnInit(): void {
     this.blogService.getBlog()
-    .subscribe( blog => this.blog = blog)
+    .subscribe((response: any) => {
+      this.blog = response.data;
+    });
   }
-
 
 }

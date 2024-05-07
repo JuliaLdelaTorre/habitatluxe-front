@@ -16,7 +16,9 @@ export class ListPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.propertiesService.getProperties()
-      .subscribe(properties => this.properties = properties);
+      .subscribe( (response:any) => {
+        this.properties = response.data;
+      });
   }
 }
 
