@@ -7,6 +7,9 @@ import { AboutUsComponent } from './pages/aboutUs/aboutUs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
+
 
 
 @NgModule({
@@ -14,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
         AppComponent,
         AboutUsComponent,
         HomeComponent,
+        LoginPageComponent,
+        RegisterPageComponent,
+
     ],
     providers: [],
     bootstrap: [AppComponent],

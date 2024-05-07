@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class AuthService {
 
-  // private baseUrl = environment.baseUrl;
+  // private readonly baseUrl: string = environment.baseUrl;
 
   constructor() { }
 

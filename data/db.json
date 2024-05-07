@@ -1,7 +1,24 @@
 {
-  "message": "Lista de blog",
-  "statusCode": 200,
-  "error": false,
+  "user": [
+    {
+    "username" : "Ana",
+    "email" : "alopez@gmail.com",
+    "password" : "12345678",
+    "password_confirmation" : "12345678"
+  },
+  {
+    "username": "Julia",
+    "email": "lopez@correo.com",
+    "password" : "12345678",
+    "password_confirmation" : "12345678"
+  }
+],
+"login": [
+  {
+    "email" : "alopez4@gmail.com",
+    "password" : "12345678"
+}
+],
   "blog": [
       {
           "id": 1,

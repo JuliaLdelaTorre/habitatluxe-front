@@ -8,4 +8,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. Ejecutar ```npm install ```
 3. Levantar backend en docker
 4. Ejecutar la app ```npm start ```o  bien ```ng serve -o```
-5. Visualizar de forma local en localhost:80.
+
