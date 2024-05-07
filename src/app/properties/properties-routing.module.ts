@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ListPageComponent } from './list-page/list-page.component';
 import { PropertyPageComponent } from './property-page/property-page.component';
 
@@ -19,8 +19,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule]
 })
 
 export class PropertiesRoutingModule { }

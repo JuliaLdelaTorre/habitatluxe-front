@@ -4,10 +4,6 @@ import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { BlogRoutingModule } from './routing/blog-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-
-
-
-
 @NgModule({
   declarations: [
     BlogPageComponent
