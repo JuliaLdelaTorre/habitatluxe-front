@@ -110,7 +110,7 @@
       "price": "1510000.00",
       "status": "active",
       "last_seller_modif": null,
-      "img": "./img/anuncio1.jpg",
+      "img": "assets/images/anuncio1.webp",
       "created_at": "2024-02-12T12:28:14.000000Z",
       "updated_at": "2024-04-09T07:37:44.000000Z"
   },
@@ -122,7 +122,7 @@
       "price": "805000.52",
       "status": "active",
       "last_seller_modif": null,
-      "img": "./img/anuncio2.jpg",
+      "img": "assets/images/anuncio2.jpg",
       "created_at": null,
       "updated_at": "2024-04-29T16:00:19.000000Z"
   },
@@ -134,7 +134,7 @@
       "price": "1200000.00",
       "status": "active",
       "last_seller_modif": null,
-      "img": "./img/anuncio3.jpg",
+      "img": "assets/images/anuncio3.webp",
       "created_at": null,
       "updated_at": "2024-02-27T20:07:06.000000Z"
   },
@@ -146,7 +146,7 @@
       "price": "750000.00",
       "status": "active",
       "last_seller_modif": null,
-      "img": "./img/anuncio4.jpg",
+      "img": "assets/images/anuncio4.webp",
       "created_at": null,
       "updated_at": null
   },
@@ -158,7 +158,7 @@
       "price": "302180.00",
       "status": "active",
       "last_seller_modif": null,
-      "img": "./img/anuncio5.jpg",
+      "img": "assets/images/anuncio5.webp",
       "created_at": "2024-02-27T15:22:35.000000Z",
       "updated_at": "2024-02-27T19:04:26.000000Z"
   },
@@ -170,7 +170,7 @@
       "price": "544358.00",
       "status": "active",
       "last_seller_modif": null,
-      "img": "./img/anuncio6.jpg",
+      "img": "assets/images/anuncio6.webp",
       "created_at": "2024-02-27T15:22:35.000000Z",
       "updated_at": "2024-02-27T15:22:35.000000Z"
   },
@@ -182,7 +182,7 @@
       "price": "660832.00",
       "status": "inactive",
       "last_seller_modif": null,
-      "img": "https://img.freepik.com/foto-gratis/villa-lujo-piscina-espectacular-diseno-contemporaneo-arte-digital-bienes-raices-hogar-casa-propiedad-ge_1258-150765.jpg?size=626&ext=jpg&ga=GA1.1.117944100.1709251200&semt=ais",
+      "img": "assets/images/anuncio6.jpg",
       "created_at": "2024-02-27T15:25:49.000000Z",
       "updated_at": "2024-03-01T13:12:35.000000Z"
   },
@@ -194,7 +194,7 @@
       "price": "334526.00",
       "status": "active",
       "last_seller_modif": null,
-      "img": "https://media.istockphoto.com/id/506903162/es/foto/villa-de-lujo-con-piscina.jpg?s=612x612&w=0&k=20&c=oKndSsy8E19AFfygKmxn1Iv4LqzVJT2d2LM5WHwco34=",
+      "img": "assets/images/anuncio1.jpg",
       "created_at": "2024-02-27T15:25:49.000000Z",
       "updated_at": "2024-02-27T15:25:49.000000Z"
   },
@@ -279,42 +279,6 @@
       "status": "active",
       "last_seller_modif": null,
       "img": "https://via.placeholder.com/640x480.png/00bbcc?text=voluptatem",
-      "created_at": "2024-02-27T15:25:49.000000Z",
-      "updated_at": "2024-02-27T15:25:49.000000Z"
-  },
-  {
-      "id": 18,
-      "seller_id": 24,
-      "property_name": "Inventore impedit perferendis eligendi laboriosam.",
-      "description": "Atque officia repellendus rem ut. Et quae libero ipsam voluptas recusandae occaecati quasi. Nihil doloremque soluta soluta voluptates enim.",
-      "price": "707171.00",
-      "status": "active",
-      "last_seller_modif": null,
-      "img": "https://via.placeholder.com/640x480.png/00ff44?text=aut",
-      "created_at": "2024-02-27T15:25:49.000000Z",
-      "updated_at": "2024-02-27T15:25:49.000000Z"
-  },
-  {
-      "id": 19,
-      "seller_id": 24,
-      "property_name": "Eum blanditiis molestias ut quibusdam.",
-      "description": "Iure rerum ducimus labore. Laudantium aut quia ea earum deleniti. Aliquam nostrum aut debitis totam tempora dolorum. Sed neque aut omnis similique reiciendis facilis vel.",
-      "price": "561032.00",
-      "status": "active",
-      "last_seller_modif": null,
-      "img": "https://via.placeholder.com/640x480.png/0066cc?text=illo",
-      "created_at": "2024-02-27T15:25:49.000000Z",
-      "updated_at": "2024-02-27T15:25:49.000000Z"
-  },
-  {
-      "id": 20,
-      "seller_id": 24,
-      "property_name": "Inventore a quam harum est qui.",
-      "description": "Optio reprehenderit voluptatem dolores sed culpa eos. Perspiciatis repudiandae ea tenetur. Quis explicabo rerum non error. Dolorem soluta rerum optio sunt dicta ad.",
-      "price": "789586.00",
-      "status": "active",
-      "last_seller_modif": null,
-      "img": "https://via.placeholder.com/640x480.png/00ff77?text=consequatur",
       "created_at": "2024-02-27T15:25:49.000000Z",
       "updated_at": "2024-02-27T15:25:49.000000Z"
   }

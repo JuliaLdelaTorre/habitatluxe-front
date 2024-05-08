@@ -7,8 +7,8 @@ import { environment } from 'src/app/environments/environments';
 @Injectable({ providedIn: 'root' })
 export class BlogService {
 
-  baseUrl = 'http://localhost:3000';
-  // baseUrl = environment.baseUrl;
+
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 

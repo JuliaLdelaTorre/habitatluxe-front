@@ -13,18 +13,18 @@ export class BlogPageComponent implements OnInit{
 
   constructor( private blogService: BlogService ) { }
 
-  // array
-  // ngOnInit(): void {
-  //   this.blogService.getBlog()
-  //   .subscribe( blog => this.blog = blog)
-  // }
-
-//objeto
+  // array - con json-sever
   ngOnInit(): void {
     this.blogService.getBlog()
-    .subscribe((response: any) => {
-      this.blog = response.data;
-    });
+    .subscribe( blog => this.blog = blog)
   }
+
+//objeto - con backend laravel.
+  // ngOnInit(): void {
+  //   this.blogService.getBlog()
+  //   .subscribe((response: any) => {
+  //     this.blog = response.data;
+  //   });
+  // }
 
 }
