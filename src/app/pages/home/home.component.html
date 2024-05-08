@@ -1,3 +1,270 @@
 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <!--<link rel="stylesheet" href="./src/style/normalize.css" />
+    <link rel="stylesheet" href="./src/style/main.css"/>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <!--<script src="https://cdn.jsdelivr.net/npm/animejs"></script>-->
+     <!--<link rel="shortcut icon" href="src/img/logo1.ico" type="image/x-icon">-->
+    
+  </head>
 
+  <body>
+    <nav id="nav-header">
+      <div id="container">
+        <div id="divName">
+          <div id="svg-container">
+                <object id="objectSVG" #objectSVG type="image/svg+xml" data="./../assets/images/logo.svg" width="450"></object>
+            </div>
+          <!--<div><p id="name">HABITAT<strong>LUXE</strong></p></div>-->
+        </div>
 
+        <div #bars id="bars">
+          <img src="./../assets/images/barras.svg" />
+        </div>
+        <div id="cross">
+          <img src="./../assets/images/icons8-close.svg" />
+        </div>
+
+        <div class="list">
+          <div id="list-container">
+            <div class="listas">
+              <div class="barra1"></div>
+              <a href="#nosotros" class="link">Nosotros</a>
+              <div class="barra2"></div>
+            </div>
+            <div class="listas">
+              <div class="barra1"></div>
+              <a href="#anuncios" class="link">Anuncios</a>
+              <div class="barra2"></div>
+            </div>
+            <div class="listas">
+              <div class="barra1"></div>
+              <a href="" class="link">Blog</a>
+              <div class="barra2"></div>
+            </div>
+            <div class="listas">
+              <div class="barra1"></div>
+              <a href="" class="link">Contacto</a>
+              <div class="barra2"></div>
+            </div>
+            <div class="listas">
+              <div class="barra1"></div>
+              <a href="" class="link">Login</a>
+              <div class="barra2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="backgroundOne">
+      <div id="container2">
+        <div>
+          <h1 class="title">
+            Venta de Casas y Apartamentos<br />Exclusivos de Lujo
+          </h1>
+        </div>
+      </div>
+    </div>
+    <main>
+      <!-- Casas y Apartamentos en venta -->
+
+      <div
+        class="content adjustDiv textAlign-center paddingBottom-150"
+        id="anuncios"
+      >
+        <h1 class="title">Casas y Apartamentos en venta</h1>
+
+        <section id="gallery">
+          <div class="card">
+            <img src="./../assets/images/anuncio1.webp" alt="" />
+
+            <div class="div-text">
+              <p class="subtitle" style="font-size: 22px">
+                Casa de Lujo en el Lago
+              </p>
+              <p class="text-content" style="font-size: 15px">
+                Casa en el lago con excelente vista, acabados de lujo a un
+                excelente precio
+              </p>
+              <p class="price">1.200.000 €</p>
+              <form action="index.html">
+                <input class="button" type="submit" value="VER PROPIEDAD" />
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./../assets/images/anuncio2.webp" alt="" />
+            <div class="div-text">
+              <p class="subtitle" style="font-size: 22px">
+                Casa terminados de lujo
+              </p>
+              <p class="text-content" style="font-size: 15px">
+                Casa en el lago con excelente vista, acabados de lujo a un
+                excelente precio
+              </p>
+              <p class="price">620.000 €</p>
+              <form action="index.html">
+                <input class="button" type="submit" value="VER PROPIEDAD" />
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./../assets/images/anuncio3.webp" alt="" />
+            <div class="div-text">
+              <p class="subtitle" style="font-size: 22px">Casa con alberca</p>
+              <p class="text-content" style="font-size: 15px">
+                Casa en el lago con excelente vista, acabados de lujo a un
+                excelente precio
+              </p>
+              <p class="price">720.000 €</p>
+              <form action="index.html">
+                <input class="button" type="submit" value="VER PROPIEDAD" />
+              </form>
+            </div>
+          </div>
+          
+        </section>
+        <form class="div-flex itemPosition" action="index.html">
+          <input class="button bgreen marginTop-50 w-250" type="submit" value="Ver todas" />
+        </form>
+      </div>
+
+      <!-- backgroundTwo -->
+      <div id="backgroundTwo"></div>
+
+      <!-- CONOCE SOBRE NOSOTROS -->
+
+      <div id="nosotros" class="content padding">
+        <h1 class="title textAlign-center">CONOCE SOBRE NOSOTROS</h1>
+        <div class="div-flex margin-auto">
+          <div>
+            <img id="img-Us" src="./../assets/images/nosotros.jpg" alt="nosotros" />
+          </div>
+          <div>
+            <p class="planeText marginTop-50">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+              tempore quasi eos magnam quod maxime est rerum alias dolor earum
+              maiores, itaque ducimus nesciunt natus aliquid autem placeat
+              doloremque officia. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Corporis iste recusandae iusto asperiores
+              possimus facilis odio sed! Distinctio expedita dicta itaque
+              sapiente libero magni ut accusantium quasi, aliquam delectus
+              pariatur! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Tempore alias dicta modi et, minima, rem amet omnis numquam
+              necessitatibus similique, maxime fuga ducimus? Aperiam ea
+              praesentium omnis cumque maxime ipsum!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="contenedor-video">
+        <video autoplay muted loop id="video-fondo">
+          <source src="./../assets/video/video1.mp4" type="video/mp4" />
+          Tu navegador no soporta videos HTML5.
+        </video>
+      </div>
+
+      <!-- MÁS SOBRE NOSOTROS -->
+
+      <div class="content padding textAlign-center">
+        <h1 class="title">MÁS SOBRE NOSOTROS</h1>
+        <div id="contenedorIMG">
+          <div id="a">
+            <img class="icons" src="./../assets/images/icono1.svg" alt="" />
+            <p class="subtitle text-22px">SEGURIDAD</p>
+            <p class="planeText">
+              Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti
+              sit minus consectetur obcaecati molestiae dolorem natus dolores
+              reiciendis tempore, explicabo cum nobis laudantium. Voluptates?
+            </p>
+          </div>
+          <div id="b">
+            <img class="icons" src="./../assets/images/icono2.svg" alt="" />
+            <p class="subtitle text-22px">PRECIO</p>
+            <p class="planeText">
+              Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti
+              sit minus consectetur obcaecati molestiae dolorem natus dolores
+              reiciendis tempore, explicabo cum nobis laudantium. Voluptates?
+            </p>
+          </div>
+          <div id="c">
+            <img class="icons" src="./../assets/images/icono3.svg" alt="" />
+            <p class="subtitle text-22px">A TIEMPO</p>
+            <p class="planeText">
+              Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti
+              sit minus consectetur obcaecati molestiae dolorem natus dolores
+              reiciendis tempore, explicabo cum nobis laudantium. Voluptates?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- backgroundThree -->
+
+      <div id="backgroundThree">
+        <div class="textAlign-center">
+          <h1 class="title textAlign-center">
+            Encuentra la casa de tus sueños
+          </h1>
+          <p class="text-content paddingBottom-150">Rellena el formulario y un asesor se pondrá en contacto a la mayor brevedad</p>
+          <div>
+            <form action="index.html">
+              <input class="button" type="submit" value="Contáctenos" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!--FOOTERRR-->
+    <footer>
+      <nav id="nav-footer">
+        <div id="socialNetworks">
+          <div>
+            <a href="www.google.es"
+              ><img class="social-icon" src="./../assets/images/ig.svg" alt="instagram"
+            /></a>
+          </div>
+          <div>
+            <a href=""
+              ><img class="social-icon" src="./../assets/images/tw.svg" alt="twitter"
+            /></a>
+          </div>
+          <div>
+            <a href=""
+              ><img class="social-icon" src="./../assets/images/in.svg" alt="linkedin"
+            /></a>
+          </div>
+        </div>
+
+        <div id="link-footer">
+          <div><a href="#">Inicio</a></div>
+          <div><a href="#">Acerca de</a></div>
+          <div><a href="#">Contacto</a></div>
+        </div>
+        <div id="name-footer">
+          <p>© 2024 <strong> HABITATLUXE </strong>&nbsp;&nbsp;&nbsp;<span class="dancing-script">"Encuentra tu espacio ideal"</span></p>
+        </div>
+      </nav>
+    </footer>
+    <script>
+        window.onload = function() {
+          var script = document.createElement('script');
+          script.src = 'assets/js/script.js';
+          document.body.appendChild(script);
+        };
+    </script>
+  </body>

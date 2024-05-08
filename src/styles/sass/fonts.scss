@@ -1,0 +1,45 @@
+$font-family_1: 'Overpass', sans-serif;
+
+.dancing-script{
+	font-family: "Dancing Script", cursive;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-size: 25px;
+  }
+
+
+.title {
+    color: $color_1;
+    font-family: $font-family_1;
+    margin-bottom: 125px;
+	font-size: 40px;
+}
+
+
+img, video{
+	max-width: auto;
+	height: auto;
+}
+.subtitle {
+	color: $color_1;
+	font-family: $font-family_1;
+	font-size: 35px;
+}
+
+.text-content {
+	color: $color_1;
+	font-family: $font-family_1;
+	font-size: 18px;
+}
+
+.price {
+	color: $color_2;
+	font-family: $font-family_1;
+	font-size: 20px;
+}
+
+.planeText{
+	color: $color_1;
+	font-family: "Overpass", sans-serif;
+	margin: 10px;
+  }
