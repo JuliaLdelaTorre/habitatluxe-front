@@ -7,7 +7,7 @@
 
 // @NgModule({
 //   declarations: [
-//     LoginPageComponent,
+//
 //     RegisterPageComponent,
 
 //   ],

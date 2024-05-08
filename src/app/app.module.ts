@@ -17,7 +17,7 @@ import { RegisterPageComponent } from './auth/pages/register-page/register-page.
         AppComponent,
         AboutUsComponent,
         HomeComponent,
-        LoginPageComponent,
+
         RegisterPageComponent,
 
     ],

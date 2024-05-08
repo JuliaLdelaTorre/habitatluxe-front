@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './pages/aboutUs/aboutUs.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
 
 const routes: Routes = [
   // inicio de la aplicación (landing).
@@ -10,9 +12,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   // ruta a la página "Nosotros."
   { path: 'aboutUs', component: AboutUsComponent},
-
+  { path: 'login', component: LoginPageComponent},
+  { path: 'register', component: RegisterPageComponent},
   // Con carga perezosa, no se carga el módulo hasta que se navega a la ruta.
-  { path: 'properties', loadChildren: () => import('./properties/properties.module').then(m => m.PropertiesModule) },
+  { path: 'properties', loadChildren: () => import('./properties/properties.module').then(m => m.PropertiesModule)},
   { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)},
   { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)},
 
