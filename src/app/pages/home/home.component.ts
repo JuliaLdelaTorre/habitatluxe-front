@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, Renderer2} from '@angular/core';
 
 
 @Component({
@@ -11,10 +11,10 @@ export class HomeComponent  implements AfterViewInit{
   constructor(private renderer: Renderer2) { }
 
   // DROPDOWN MENU LOGIN/REGISTER
-  dropdownVisible = false;
+  /*dropdownVisible = false;
   toggleDropdown() {
     this.dropdownVisible = !this.dropdownVisible;
-  }
+  }*/
 
   ngAfterViewInit(): void {
     this.loadAnimeJS().then(() => {

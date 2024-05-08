@@ -90,12 +90,11 @@ window.addEventListener("resize", ajustarSegunTamañoDePantalla);
 document.getElementById("objectSVG").addEventListener("load", function () {
   // Accede al documento SVG cargado
   let svgDocument = this.contentDocument;
-  console.log("esto se esta ejecutando")
   let puerta = svgDocument.getElementById("puerta");
   let marco = svgDocument.getElementById("marco-puerta");
-  let texto = svgDocument.getElementById("texto");
   var centerX = (svgDocument.getElementById("circulo2").getBBox().x + svgDocument.getElementById("circulo2").getBBox().width / 2);
   var centerY = (svgDocument.getElementById("circulo2").getBBox().y + svgDocument.getElementById("circulo2").getBBox().height / 2);
+  
   anime({
     targets: [
       svgDocument.getElementById("circulo2"),
