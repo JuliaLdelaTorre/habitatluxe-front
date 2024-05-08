@@ -86,6 +86,10 @@
 .dropdown {
   position: relative;
   display: inline-block;
+}
+
+
+#profile svg{
   cursor: pointer;
 }
 
@@ -106,6 +110,7 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 5px 5px 5px 5px;
 }
 
 /* Estilos de los enlaces dentro del contenido */
@@ -119,6 +124,7 @@
 /* Cambia el color de fondo cuando se pasa el ratón por encima */
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  border-radius: 5px 5px 5px 5px;
 }
 
 /* Muestra el contenido cuando se pasa el ratón por encima del contenedor */
