@@ -10,7 +10,11 @@ export class HomeComponent  implements AfterViewInit{
 
   constructor(private renderer: Renderer2) { }
 
-
+  // DROPDOWN MENU LOGIN/REGISTER
+  dropdownVisible = false;
+  toggleDropdown() {
+    this.dropdownVisible = !this.dropdownVisible;
+  }
 
   ngAfterViewInit(): void {
     this.loadAnimeJS().then(() => {
@@ -26,15 +30,15 @@ export class HomeComponent  implements AfterViewInit{
       const script = this.renderer.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js';
       script.type = 'text/javascript'; // o 'module' dependiendo del formato del script
-  
+
       script.onload = () => {
         resolve();
       };
-  
+
       script.onerror = (error: ErrorEvent) => {
         reject(error);
       };
-  
+
       this.renderer.appendChild(document.body, script);
     });
   }
