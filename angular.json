@@ -11,7 +11,9 @@
         }
       },
       "projectType": "application",
-      "schematics": {},
+      "schematics": {"@schematics/angular:component": {
+        "style": "scss"
+      }},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -36,7 +38,9 @@
                 "src/styles/sass/main.scss"
               ],
 
-            "scripts": []
+            "scripts": [
+              "node_modules/animejs/lib/anime.min.js" 
+            ]
           },
           "configurations": {
             "production": {
@@ -49,7 +53,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "10kb"
                 }
               ],
               "outputHashing": "all"
@@ -98,10 +102,16 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+           
+            "scripts": [
+              "src/assets/js/script.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

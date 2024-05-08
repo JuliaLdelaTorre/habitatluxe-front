@@ -1,30 +1,81 @@
-// footer {
-//   display: flex;
-//   background-color: $secondary;
-//   width: 100vw;
-//   height: 200px;
-//   margin-top: 2em;
+ /*footer {
+   display: flex;
+   background-color: $secondary;
+   width: 100vw;
+   height: 200px;
+   margin-top: 2em;
 
 
-//   .nosotros__nav {
-//     display: flex;
-//     align-items:center;
-//     justify-content: space-between;
-//     margin-left: 50px;
-//     margin-top: 10px;
-//     gap: 2em;
+   .nosotros__nav {
+     display: flex;
+     align-items:center;
+     justify-content: space-between;
+     margin-left: 50px;
+     margin-top: 10px;
+     gap: 2em;
 
-//   }
+   }
 
-//   .footer__parag {
-//     display: flex;
-//     color: $primary;
-//     font-size: 1.2em;
+   .footer__parag {
+     display: flex;
+     color: $primary;
+     font-size: 1.2em;
 
-//     font-style: italic;
-//     align-items: center;
-//     justify-content: space-between;
-//     margin-left: 50px;
-//   }
+     font-style: italic;
+     align-items: center;
+     justify-content: space-between;
+     margin-left: 50px;
+   }*/
 
 // }
+
+
+@import 'fonts';
+
+footer{
+	background-color: $background-color_1;
+	#nav-footer{
+		
+		display: flex;
+    	align-items: center;
+    	height: 15vh;
+
+		#socialNetworks{
+			display: block;
+			text-align: center;
+			align-items: center;
+			height: auto;
+			width: 10%;
+			padding: 1vh;
+			.social-icon{
+				width: 30px;
+				height: 30px;
+			}
+		}
+		#link-footer{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			height: 7.5vh;
+			padding: 1vh;
+			width: 40%;
+			a{
+				color: $color_1;
+				text-decoration: none;
+				font-family: "Overpass", sans-serif;
+			}
+		}
+
+		#name-footer{
+			text-align: center;
+			width: 50%;
+			p{
+				color: $color_1;
+				font-family: $font-family_1;
+				font-size: 25px;
+			}
+		}
+		
+	}
+
+}
