@@ -9,6 +9,7 @@ import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -18,7 +19,6 @@ import { RegisterPageComponent } from './auth/pages/register-page/register-page.
         AboutUsComponent,
         HomeComponent,
 
-        RegisterPageComponent,
 
     ],
     providers: [],
@@ -27,7 +27,8 @@ import { RegisterPageComponent } from './auth/pages/register-page/register-page.
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        SharedModule
+        SharedModule,
+        AuthModule
     ]
 })
 export class AppModule { }
