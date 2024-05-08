@@ -6,8 +6,6 @@ let listContainer = document.getElementById("list-container");
 let links = document.getElementsByClassName("link");
 let navHeader = document.getElementById("nav-header")
 
-import anime from "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
-
 
 
 /*Función presionar barras*/
@@ -87,81 +85,82 @@ window.addEventListener("resize", ajustarSegunTamañoDePantalla);
 /*--------------------------------------------------------------------------------------------------------*/
 
 /* ANIME JS - Animación logo SVG */
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("objectSVG").addEventListener("load", function () {
-    // Accede al documento SVG cargado
-    let svgDocument = this.contentDocument;
-    conosle.log("esto se esta ejecutando")
-    let puerta = svgDocument.getElementById("puerta");
-    let marco = svgDocument.getElementById("marco-puerta");
-    var centerX = (svgDocument.getElementById("circulo2").getBBox().x + svgDocument.getElementById("circulo2").getBBox().width / 2);
-    var centerY = (svgDocument.getElementById("circulo2").getBBox().y + svgDocument.getElementById("circulo2").getBBox().height / 2);
+
+
+document.getElementById("objectSVG").addEventListener("load", function () {
+  // Accede al documento SVG cargado
+  let svgDocument = this.contentDocument;
+  console.log("esto se esta ejecutando")
+  let puerta = svgDocument.getElementById("puerta");
+  let marco = svgDocument.getElementById("marco-puerta");
+  let texto = svgDocument.getElementById("texto");
+  var centerX = (svgDocument.getElementById("circulo2").getBBox().x + svgDocument.getElementById("circulo2").getBBox().width / 2);
+  var centerY = (svgDocument.getElementById("circulo2").getBBox().y + svgDocument.getElementById("circulo2").getBBox().height / 2);
+  anime({
+    targets: [
+      svgDocument.getElementById("circulo2"),
+      svgDocument.getElementById("path59"),
+      svgDocument.getElementById("rect8"),
+      svgDocument.getElementById("rect7")
+    ],
+    scale: {
+      value: 1.12,
+      duration: 2000,
+    },
+    easing: "linear",
+    loop: true,
+    direction: "alternate",
+    update: function (animation) {
+      animation.animatables.forEach(function (animatable) {
+        animatable.target.style.transformOrigin = centerX + "px " + centerY + "px";
+      });
+    },
+  });
+
+  function animarPuerta() {
     anime({
-      targets: [
-        svgDocument.getElementById("circulo2"),
-        svgDocument.getElementById("path59"),
-        svgDocument.getElementById("rect8"),
-        svgDocument.getElementById("rect7")
-      ],
-      scale: {
-        value: 1.12,
-        duration: 2000,
-      },
-      easing: "linear",
-      loop: true,
-      direction: "alternate",
-      update: function (animation) {
-        animation.animatables.forEach(function (animatable) {
-          animatable.target.style.transformOrigin = centerX + "px " + centerY + "px";
+      targets: [puerta, marco],
+      fill: "#9c813f",
+      duration: 2500,
+      easing: "easeInOutQuad",
+      opacity: 1,
+
+      complete: function () {
+        anime({
+          targets: puerta,
+          fill: "#57371f",
+          rotateY: "-115deg",
+          rotateZ: "+2deg",
+          duration: 2000,
+          easing: "easeInOutQuad",
+          update: function () {
+            // Obtener las coordenadas del borde derecho de la puerta en relación con el SVG
+            var doorRight = puerta.getBBox().x + puerta.getBBox().width;
+            // Establecer el origen en el borde derecho de la puerta
+            puerta.style.transformOrigin = doorRight + "px 50%";
+          },
+          complete: function () {
+            anime({
+              targets: [puerta, marco],
+              opacity: 0,
+              duration: 3000, 
+              easing: "linear",
+              complete: function () {
+                anime({
+                  targets: [puerta],
+                  rotateY: "0deg",
+                  rotateZ: "0deg",
+                  fill: "#9c813f",
+                  complete: function () {
+                    animarPuerta();
+                  },
+                });
+              },
+            });
+          },
         });
       },
     });
-
-    function animarPuerta() {
-      anime({
-        targets: [puerta, marco],
-        fill: "#9c813f",
-        duration: 2500,
-        easing: "easeInOutQuad",
-        opacity: 1,
-
-        complete: function () {
-          anime({
-            targets: puerta,
-            fill: "#57371f",
-            rotateY: "-115deg",
-            rotateZ: "+2deg",
-            duration: 2000,
-            easing: "easeInOutQuad",
-            update: function () {
-              // Obtener las coordenadas del borde derecho de la puerta en relación con el SVG
-              var doorRight = puerta.getBBox().x + puerta.getBBox().width;
-              // Establecer el origen en el borde derecho de la puerta
-              puerta.style.transformOrigin = doorRight + "px 50%";
-            },
-            complete: function () {
-              anime({
-                targets: [puerta, marco],
-                opacity: 0,
-                duration: 3000, 
-                easing: "linear",
-                complete: function () {
-                  anime({
-                    targets: [puerta],
-                    rotateY: "0deg",
-                    rotateZ: "0deg",
-                    fill: "#9c813f",
-                    complete: function () {
-                      animarPuerta();
-                    },
-                  });
-                },
-              });
-            },
-          });
-        },
-      });
-    }
-    animarPuerta();
-  });
+  }
+  animarPuerta();
 });
