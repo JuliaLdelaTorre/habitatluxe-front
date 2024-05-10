@@ -2,6 +2,29 @@
 @import '../../../styles/sass/home';
 @import '../../../styles/sass/footer';
 
+main{
+	
+  .light-mode {
+    background-color: #d3d3d3; /* Fondo oscuro */
+    
+    transition: 1s;
+  }
+
+  .light-title {
+    color: #333;
+    transition: 1s;
+    
+  }
+}
+
+#sun{
+  display: none;
+  fill: #d3d3d3;
+}
+#moon{
+  fill: #d3d3d3;
+}
+
 
 .button {
   color: $color_1;
@@ -133,7 +156,7 @@
 }
 
 /* Asegura que el contenido se muestre correctamente en dispositivos móviles */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 942px) {
   .dropdown-content {
     position: relative;
     width: 100%;

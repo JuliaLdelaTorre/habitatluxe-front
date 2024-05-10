@@ -28,11 +28,11 @@
               <!--<div><p id="name">HABITAT<strong>LUXE</strong></p></div>-->
             </div>
     
-            <div #bars id="bars">
-              <img src="./../assets/images/barras.svg" />
+            <div  id="bars">
+              <img (click)="pressBars()" src="./../assets/images/barras.svg" />
             </div>
             <div id="cross">
-              <img src="./../assets/images/icons8-close.svg" />
+              <img (click)="pressCross()" src="./../assets/images/icons8-close.svg" />
             </div>
     
             <div class="list">
@@ -69,9 +69,13 @@
                         <a href="#"><i class="fas fa-sign-out-alt mr-2 text-lg"></i>Cerrar sesión </a>
                       </div>
                   </div>
+                  <button (click)="togglelightMode()">
+                    <img id="moon" #moon src="./../assets/images/dark-mode.svg" width="30">
+                    <img id="sun" #sun src="./../assets/images/light-mode.svg" width="30">
+                  </button>
               </div>
             </div>
-          </div>
+            </div>
         </nav>
     <div id="backgroundOne">
       <div id="container2">
@@ -85,8 +89,8 @@
     <main>
       <!-- Casas y Apartamentos en venta -->
   
-      <div class="content adjustDiv textAlign-center paddingBottom-150" id="anuncios">
-        <h1 class="title">Casas y Apartamentos en venta</h1>
+      <div [ngClass]="{'light-mode': lightMode}" class="content adjustDiv textAlign-center paddingBottom-150" id="anuncios">
+        <h1 [ngClass]="{'light-title': lightMode}" class="title">Casas y Apartamentos en venta</h1>
   
         <section id="gallery">
           <div class="card">
@@ -148,8 +152,8 @@
   
       <!-- CONOCE SOBRE NOSOTROS -->
   
-      <div id="nosotros" class="content padding">
-        <h1 class="title textAlign-center">CONOCE SOBRE NOSOTROS</h1>
+      <div [ngClass]="{'light-mode': lightMode}" id="nosotros" class="content padding">
+        <h1 [ngClass]="{'light-title': lightMode}" class="title textAlign-center">CONOCE SOBRE NOSOTROS</h1>
         <div class="div-flex margin-auto">
           <div>
             <img id="img-Us" src="./../assets/images/nosotros.jpg" alt="nosotros" />
@@ -182,8 +186,8 @@
   
       <!-- MÁS SOBRE NOSOTROS -->
   
-      <div class="content padding textAlign-center">
-        <h1 class="title">MÁS SOBRE NOSOTROS</h1>
+      <div [ngClass]="{'light-mode': lightMode}" class="content padding textAlign-center">
+        <h1 [ngClass]="{'light-title': lightMode}" class="title">MÁS SOBRE NOSOTROS</h1>
         <div id="contenedorIMG">
           <div id="a">
             <img class="icons" src="./../assets/images/icono1.svg" alt="" />
