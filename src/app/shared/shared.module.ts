@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ShowMoreComponent } from './components/show-more/show-more.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { ShowMoreComponent } from './components/show-more/show-more.component';
     ShowMoreComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   // Add  to the exports array so that they can be used in the main module and other modules.
   exports: [

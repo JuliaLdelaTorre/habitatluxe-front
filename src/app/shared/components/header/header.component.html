@@ -1,1 +1,16 @@
-<p>header works!</p>
+<header>
+  <nav class="flex flex-col md:flex-row items-center justify-between p-4 bg-[#33383c] md:h-28">
+    <div class="mx-10">
+      <img src="assets/images/logo.svg" alt="Logo" class="h-16 mr-4">
+    </div>
+    <!-- TODO: terminar de implementar el menu hamburguesa responsive. -->
+    <div *ngIf="isMobile" [ngClass]="{'hidden': !isMobile}"
+    class="flex flex-col md:flex-row space-x-4 md:mr-40 p-4">
+      <a routerLink="/home" class="text-white text-2xl font-bold">Inicio</a>
+      <a routerLink="/aboutUs" class="text-white text-2xl font-bold">Nosotros</a>
+      <a routerLink="/properties" class="text-white text-2xl font-bold">Anuncios</a>
+      <a routerLink="/blog" class="text-white text-2xl font-bold">Blog</a>
+      <a routerLink="/contact" class="text-white text-2xl font-bold">Contacto</a>
+    </div>
+  </nav>
+</header>

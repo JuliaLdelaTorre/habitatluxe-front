@@ -18,21 +18,21 @@ export class ListPageComponent implements OnInit {
   constructor(private propertiesService: PropertiesService) { }
 
   // con servidor laravel.
-  ngOnInit(): void {
-    this.propertiesService.getProperties()
-      .subscribe( (response:any) => {
-        this.properties = response.data;
-      });
-  }
-
-  // Con json-server
   // ngOnInit(): void {
   //   this.propertiesService.getProperties()
-  //     .subscribe(properties => {
-  //       this.properties = properties;
-  //       this.totalPages = Math.ceil(this.properties.length / this.pageSize);
+  //     .subscribe( (response:any) => {
+  //       this.properties = response.data;
   //     });
   // }
+
+  // Con json-server
+  ngOnInit(): void {
+    this.propertiesService.getProperties()
+      .subscribe(properties => {
+        this.properties = properties;
+        this.totalPages = Math.ceil(this.properties.length / this.pageSize);
+      });
+  }
 
   changePage(newPage: number) {
     this.currentPage = newPage;

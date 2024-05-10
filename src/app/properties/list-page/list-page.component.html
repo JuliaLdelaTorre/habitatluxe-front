@@ -1,10 +1,13 @@
-<div class="container px-6 pt-10 mx-auto">
+<shared-header></shared-header>
+<!-- list-page component-->
+<div class="container relative px-6 pt-10 mx-auto">
   <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Propiedades en venta</h1>
-  <body class="font-sans flex justify-center items-center min-h-screen">
+
+  <body class="font-sans flex justify-center items-center pt-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div class="w-full flex flex-cols "
         *ngFor="let property of properties | slice:((currentPage-1)*pageSize):(currentPage*pageSize)">
-        <div class="w-full py-6 px-6 flex-grow">
+      <div class="w-full py-6 px-6 flex-grow hover:bg-gray-200 hover:shadow-sm transition duration-200 ease-in-out">
           <div class="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col">
             <div class="bg-cover bg-center h-56 p-4" [style.background-image]="'url(' + property.img + ')'">
               <div class="flex justify-end">
@@ -17,8 +20,8 @@
             </div>
             <div class="p-4 flex-grow">
               <p class="uppercase tracking-wide text-sm font-bold text-gray-700">• {{ property.property_name }}</p>
-              <p class="text-3xl text-gray-900">{{property.price}}</p>
-              <p class="text-gray-700 flex-grow">{{ property.description }}</p>
+              <p class="text-3xl text-gray-900">{{property.price}} €</p>
+              <p class="text-gray-700 flex-grow overflow-hidden overflow-x-auto">{{ property.description }}</p>
             </div>
             <div class="flex p-4 border-t border-gray-300 text-gray-700">
               <div class="flex-1 inline-flex items-center">
@@ -55,11 +58,16 @@
           </div>
         </div>
       </div>
-      <div *ngIf="totalPages > 1">
-        <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"
-          class="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4">Anterior</button>
-        <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)"
-          class="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Siguiente</button>
+      <!-- botones -->
+      <div class="absolute -bottom-16 w-full flex bg-white">
+        <div *ngIf="totalPages > 1">
+          <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"
+            class="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4">Anterior</button>
+          <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)"
+            class="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Siguiente</button>
+        </div>
       </div>
+
     </div>
   </body>
+</div>

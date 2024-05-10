@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  isMenuOpen: boolean = false;
+
+// hace que el menu se abra y cierre
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  isMobile() {
+    return window.innerWidth <= 768;
+  }
 }
