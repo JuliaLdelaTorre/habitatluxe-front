@@ -45,6 +45,7 @@ main{
         padding-top: 5%;
         height: auto;
         background-color: $background-color_1;
+        transition:  background-color 1s;
         #contenedorIMG {
             margin-top: 10px;
             padding-bottom: 5%;
