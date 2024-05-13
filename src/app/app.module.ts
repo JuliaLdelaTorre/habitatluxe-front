@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
 import { AuthModule } from './auth/auth.module';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
 
 
 
@@ -18,6 +19,7 @@ import { AuthModule } from './auth/auth.module';
         AppComponent,
         AboutUsComponent,
         HomeComponent,
+        MainLayoutComponent,
 
 
     ],
