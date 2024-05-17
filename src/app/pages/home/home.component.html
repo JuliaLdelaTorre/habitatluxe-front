@@ -2,17 +2,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing Page</title>
-    <!--<link rel="stylesheet" href="./src/style/normalize.css" />
-      <link rel="stylesheet" href="./src/style/main.css"/>-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <!--<script src="https://cdn.jsdelivr.net/npm/animejs"></script>-->
-    <!--<link rel="shortcut icon" href="src/img/logo1.ico" type="image/x-icon">-->
-  
     <!-- Font awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
@@ -20,21 +15,18 @@
   
   <body>
       <nav id="nav-header">
-          <div id="container">
+          <div id="container" class="containerClass" [ngClass]="{'light-mode': lightMode}">
             <div id="divName">
               <div id="svg-container">
-                    <object id="objectSVG" #objectSVG type="image/svg+xml" data="./../assets/images/logo.svg" width="450"></object>
+                    <object id="objectSVG" #objectSVG type="image/svg+xml" data="./../assets/images/logoAnimado.svg" width="450"></object>
                 </div>
-              <!--<div><p id="name">HABITAT<strong>LUXE</strong></p></div>-->
             </div>
-    
             <div  id="bars">
               <img (click)="pressBars()" src="./../assets/images/barras.svg" />
             </div>
             <div id="cross">
               <img (click)="pressCross()" src="./../assets/images/icons8-close.svg" />
             </div>
-    
             <div class="list">
               <div id="list-container">
                 <div class="listas">
@@ -96,11 +88,11 @@
           <div class="card">
             <img src="./../assets/images/anuncio1.webp" alt="" />
   
-            <div class="div-text">
-              <p class="subtitle" style="font-size: 22px">
+            <div class="div-text" [ngClass]="{'light-mode': lightMode}">
+              <p  [ngClass]="{'light-title': lightMode}"  class="subtitle" style="font-size: 22px">
                 Casa de Lujo en el Lago
               </p>
-              <p class="text-content" style="font-size: 15px">
+              <p [ngClass]="{'light-title': lightMode}"  class="text-content" style="font-size: 15px">
                 Casa en el lago con excelente vista, acabados de lujo a un
                 excelente precio
               </p>
@@ -112,11 +104,11 @@
           </div>
           <div class="card">
             <img src="./../assets/images/anuncio2.webp" alt="" />
-            <div class="div-text">
-              <p class="subtitle" style="font-size: 22px">
+            <div class="div-text" [ngClass]="{'light-mode': lightMode}">
+              <p [ngClass]="{'light-title': lightMode}"  class="subtitle" style="font-size: 22px">
                 Casa terminados de lujo
               </p>
-              <p class="text-content" style="font-size: 15px">
+              <p [ngClass]="{'light-title': lightMode}"  class="text-content" style="font-size: 15px">
                 Casa en el lago con excelente vista, acabados de lujo a un
                 excelente precio
               </p>
@@ -128,9 +120,9 @@
           </div>
           <div class="card">
             <img src="./../assets/images/anuncio3.webp" alt="" />
-            <div class="div-text">
-              <p class="subtitle" style="font-size: 22px">Casa con alberca</p>
-              <p class="text-content" style="font-size: 15px">
+            <div class="div-text" [ngClass]="{'light-mode': lightMode}">
+              <p [ngClass]="{'light-title': lightMode}"  class="subtitle" style="font-size: 22px">Casa con alberca</p>
+              <p [ngClass]="{'light-title': lightMode}"  class="text-content" style="font-size: 15px">
                 Casa en el lago con excelente vista, acabados de lujo a un
                 excelente precio
               </p>
@@ -159,7 +151,7 @@
             <img id="img-Us" src="./../assets/images/nosotros.jpg" alt="nosotros" />
           </div>
           <div>
-            <p class="planeText marginTop-50">
+            <p [ngClass]="{'light-title': lightMode}"  class="planeText marginTop-50">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
               tempore quasi eos magnam quod maxime est rerum alias dolor earum
               maiores, itaque ducimus nesciunt natus aliquid autem placeat
@@ -191,8 +183,8 @@
         <div id="contenedorIMG">
           <div id="a">
             <img class="icons" src="./../assets/images/icono1.svg" alt="" />
-            <p class="subtitle text-22px">SEGURIDAD</p>
-            <p class="planeText">
+            <p [ngClass]="{'light-title': lightMode}"  class="subtitle text-22px">SEGURIDAD</p>
+            <p [ngClass]="{'light-title': lightMode}"  class="planeText">
               Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti
               sit minus consectetur obcaecati molestiae dolorem natus dolores
               reiciendis tempore, explicabo cum nobis laudantium. Voluptates?
@@ -200,8 +192,8 @@
           </div>
           <div id="b">
             <img class="icons" src="./../assets/images/icono2.svg" alt="" />
-            <p class="subtitle text-22px">PRECIO</p>
-            <p class="planeText">
+            <p [ngClass]="{'light-title': lightMode}"  class="subtitle text-22px">PRECIO</p>
+            <p [ngClass]="{'light-title': lightMode}"  class="planeText">
               Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti
               sit minus consectetur obcaecati molestiae dolorem natus dolores
               reiciendis tempore, explicabo cum nobis laudantium. Voluptates?
@@ -209,8 +201,8 @@
           </div>
           <div id="c">
             <img class="icons" src="./../assets/images/icono3.svg" alt="" />
-            <p class="subtitle text-22px">A TIEMPO</p>
-            <p class="planeText">
+            <p [ngClass]="{'light-title': lightMode}"  class="subtitle text-22px">A TIEMPO</p>
+            <p [ngClass]="{'light-title': lightMode}"  class="planeText">
               Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti
               sit minus consectetur obcaecati molestiae dolorem natus dolores
               reiciendis tempore, explicabo cum nobis laudantium. Voluptates?
@@ -238,8 +230,8 @@
     </main>
   
     <!--FOOTERRR-->
-    <footer>
-      <nav id="nav-footer">
+    <footer >
+      <nav id="nav-footer" class="nav-footer" [ngClass]="{'light-mode': lightMode}">
         <div id="socialNetworks">
           <div>
             <a href="www.google.es"><img class="social-icon" src="./../assets/images/ig.svg" alt="instagram" /></a>
@@ -253,12 +245,12 @@
         </div>
   
         <div id="link-footer">
-          <div><a href="#">Inicio</a></div>
-          <div><a href="#">Acerca de</a></div>
-          <div><a href="#">Contacto</a></div>
+          <div><a [ngClass]="{'light-title': lightMode}"  href="#">Inicio</a></div>
+          <div><a [ngClass]="{'light-title': lightMode}"  href="#">Acerca de</a></div>
+          <div><a [ngClass]="{'light-title': lightMode}"  href="#">Contacto</a></div>
         </div>
         <div id="name-footer">
-          <p>© 2024 <strong> HABITATLUXE </strong>&nbsp;&nbsp;&nbsp;<span class="dancing-script">"Encuentra tu espacio
+          <p [ngClass]="{'light-title': lightMode}"  >© 2024 <strong> HABITATLUXE </strong>&nbsp;&nbsp;&nbsp;<span class="dancing-script">"Encuentra tu espacio
               ideal"</span></p>
         </div>
       </nav>

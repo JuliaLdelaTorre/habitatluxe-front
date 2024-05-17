@@ -33,9 +33,11 @@
 @import 'fonts';
 
 footer{
-	background-color: $background-color_1;
+	.nav-footer{
+		background-color: $background-color_1;
+		transition: background-color 1s;
+	}
 	#nav-footer{
-		
 		display: flex;
     	align-items: center;
     	height: 15vh;
@@ -74,8 +76,6 @@ footer{
 				font-family: $font-family_1;
 				font-size: 25px;
 			}
-		}
-		
+		}	
 	}
-
 }

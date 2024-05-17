@@ -6,13 +6,16 @@
 	top: 0;
   	z-index: 5;
     
+
+    .containerClass{
+        background-color: $background-color_4-1;
+        transition: background-color 1s;
+    }
     #container {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         height: 100px;
-        background-color: $background-color_4-1;
-
         #divName {
             display: flex;
             width: 30%;

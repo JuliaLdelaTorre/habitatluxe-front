@@ -2,26 +2,70 @@
 @import '../../../styles/sass/home';
 @import '../../../styles/sass/footer';
 
-main{
-	
+#nav-header{
+
   .light-mode {
-    background-color: #d3d3d3; /* Fondo oscuro */
-    
+    background-color: #666666dc;
+    transition: 1s;
+  }
+  
+}
+
+
+main {
+  .light-mode {
+    background-color: #e9e9e9;
     transition: 1s;
   }
 
   .light-title {
-    color: #333;
+    color: #1a1a1a;
+    transition: color 1s;
+  }
+
+  section#gallery {
+    .card{
+      .light-mode {
+        background-color: #c2c2c2;
+        transition: 1s;
+        .light-title {
+          color: #1a1a1a;
+          transition: color 1s;
+          font-family: "Overpass", sans-serif;
+          font-size: 18px;
+        }
+      }
+
+    }
+  } 
+
+ 
+}
+
+footer {
+  .light-mode {
+    background-color: #666666dc;
     transition: 1s;
-    
   }
 }
 
-#sun{
+
+
+img, video, svg {
+  display: flex;
+  margin: auto;
+}
+
+img, video {
+  max-width: none;
+}
+
+#sun {
   display: none;
   fill: #d3d3d3;
 }
-#moon{
+
+#moon {
   fill: #d3d3d3;
 }
 
@@ -36,6 +80,11 @@ main{
   cursor: pointer;
   font-family: "Overpass", sans-serif;
   box-shadow: 2px 2px 2px rgba(148, 148, 148, 0.705);
+  transition: scale 0.5s;
+  &:hover{
+    scale: 1.1;
+    transition: scale 0.5s;
+  }
 }
 
 .button.bgreen {
@@ -112,7 +161,7 @@ main{
 }
 
 
-#profile svg{
+#profile svg {
   cursor: pointer;
 }
 
@@ -131,7 +180,7 @@ main{
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 5px 5px 5px 5px;
 }

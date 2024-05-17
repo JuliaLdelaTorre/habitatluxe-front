@@ -107,6 +107,7 @@ main{
             overflow: hidden;
             position: relative;
             img {
+                margin: unset;
                 width: 0px;
                 flex-grow: 1;
                 object-fit: cover;
@@ -233,7 +234,7 @@ main{
                 height: 569px;
                 margin-top: 70px;
                 .div-text {
-                    top: -0.5%;
+                    top: -6.1%;
                     opacity: 1;
                     width: 100%;
                 }

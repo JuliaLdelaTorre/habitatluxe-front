@@ -1,15 +1,23 @@
-import { Component, ElementRef, OnInit, AfterViewInit, HostListener, ViewChild  } from '@angular/core';
-import anime from 'animejs/lib/anime.es.js'; // Importa anime.js
+import { Component, ElementRef, OnInit, AfterViewInit, HostListener, ViewChild } from '@angular/core';
+import anime from 'animejs/lib/anime.es.js';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) { 
+    this.lightModeSubject = new Subject<boolean>();
+  }
   crossActive: boolean = false;
+
+  lightMode: boolean = true;
+  lightModeSubject: Subject<boolean>; 
+  
+
 
   ngOnInit(): void {
     this.adjustAccordingToScreenSize();
@@ -19,7 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.initializeAnimation();
   }
-
+  
   private initializeAnimation(): void {
     const objectSVG = this.elementRef.nativeElement.querySelector('#objectSVG');
     objectSVG.addEventListener('load', () => {
@@ -28,6 +36,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
       const marco = svgDocument.getElementById('marco-puerta');
       const centerX = svgDocument.getElementById('circulo2').getBBox().x + svgDocument.getElementById('circulo2').getBBox().width / 2;
       const centerY = svgDocument.getElementById('circulo2').getBBox().y + svgDocument.getElementById('circulo2').getBBox().height / 2;
+      const texto = svgDocument.getElementById('texto');
+
+
+      anime({
+        targets: texto,
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 7000,
+        delay: function(el, i) { return i * 100 },
+        direction: 'alternate',
+        loop: true
+      });
 
       anime({
         targets: [
@@ -49,7 +69,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
           });
         },
       });
-
       this.animarPuerta(puerta, marco, svgDocument);
     });
   }
@@ -143,34 +162,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.pressCross();
     }
   }
-
-
-  lightMode: boolean = true;
-  
   @ViewChild('moon') moonImg!: ElementRef;
   @ViewChild('sun') sunImg!: ElementRef;
 
-  togglelightMode() {
+  togglelightMode(): void {
     this.lightMode = !this.lightMode;
-     if (this.lightMode) {
-      this.moonImg.nativeElement.style.display = 'block';
-      this.sunImg.nativeElement.style.display = 'none';
-    } else {
-      this.moonImg.nativeElement.style.display = 'none';
-      this.sunImg.nativeElement.style.display = 'block';
-    }
+    this.lightModeSubject.next(this.lightMode);
+     if(this.lightMode) {
+        this.moonImg.nativeElement.style.display = 'block';
+        this.sunImg.nativeElement.style.display = 'none';
+      } else {
+        this.moonImg.nativeElement.style.display = 'none';
+        this.sunImg.nativeElement.style.display = 'block';
+      }
   }
-
-
-
-
-  changeSVG() {
-   
-    
-    document.getElementById("cross")!.style.display = "block";
-  }
- 
-
-  
-
 }
