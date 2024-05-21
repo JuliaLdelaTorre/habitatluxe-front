@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <!-- Font awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  
+
   </head>
-  
+
   <body>
       <nav id="nav-header">
           <div id="container" class="containerClass" [ngClass]="{'light-mode': lightMode}">
@@ -56,9 +56,9 @@
                       </button>
                       <!-- Contenido del menú -->
                       <div class="dropdown-content">
-                        <a routerLink="/login"><i class="fas fa-user-circle mr-2 text-lg"></i>Iniciar sesión</a>
-                        <a routerLink="/register"><i class="far fa-user mr-2 text-lg"></i>Crear cuenta</a>
-                        <a href="#"><i class="fas fa-sign-out-alt mr-2 text-lg"></i>Cerrar sesión </a>
+                        <a routerLink="/auth/login"><i class="fas fa-user-circle mr-2 text-lg"></i>Iniciar sesión</a>
+                        <a routerLink="/auth/register"><i class="far fa-user mr-2 text-lg"></i>Crear cuenta</a>
+                        <!-- <a href="#"><i class="fas fa-sign-out-alt mr-2 text-lg"></i>Cerrar sesión </a> -->
                       </div>
                   </div>
                   <button (click)="togglelightMode()">
@@ -80,14 +80,14 @@
     </div>
     <main>
       <!-- Casas y Apartamentos en venta -->
-  
+
       <div [ngClass]="{'light-mode': lightMode}" class="content adjustDiv textAlign-center paddingBottom-150" id="anuncios">
         <h1 [ngClass]="{'light-title': lightMode}" class="title">Casas y Apartamentos en venta</h1>
-  
+
         <section id="gallery">
           <div class="card">
             <img src="./../assets/images/anuncio1.webp" alt="" />
-  
+
             <div class="div-text" [ngClass]="{'light-mode': lightMode}">
               <p  [ngClass]="{'light-title': lightMode}"  class="subtitle" style="font-size: 22px">
                 Casa de Lujo en el Lago
@@ -132,18 +132,18 @@
               </form>
             </div>
           </div>
-  
+
         </section>
         <form class="div-flex itemPosition" action="index.html">
           <input class="button bgreen marginTop-50 w-250" type="submit" value="Ver todas" />
         </form>
       </div>
-  
+
       <!-- backgroundTwo -->
       <div id="backgroundTwo"></div>
-  
+
       <!-- CONOCE SOBRE NOSOTROS -->
-  
+
       <div [ngClass]="{'light-mode': lightMode}" id="nosotros" class="content padding">
         <h1 [ngClass]="{'light-title': lightMode}" class="title textAlign-center">CONOCE SOBRE NOSOTROS</h1>
         <div class="div-flex margin-auto">
@@ -167,7 +167,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- VIDEO -->
       <div class="contenedor-video">
         <video autoplay muted loop id="video-fondo">
@@ -175,9 +175,9 @@
           Tu navegador no soporta videos HTML5.
         </video>
       </div>
-  
+
       <!-- MÁS SOBRE NOSOTROS -->
-  
+
       <div [ngClass]="{'light-mode': lightMode}" class="content padding textAlign-center">
         <h1 [ngClass]="{'light-title': lightMode}" class="title">MÁS SOBRE NOSOTROS</h1>
         <div id="contenedorIMG">
@@ -210,9 +210,9 @@
           </div>
         </div>
       </div>
-  
+
       <!-- backgroundThree -->
-  
+
       <div id="backgroundThree">
         <div class="textAlign-center">
           <h1 class="title textAlign-center">
@@ -228,7 +228,7 @@
         </div>
       </div>
     </main>
-  
+
     <!--FOOTERRR-->
     <footer >
       <nav id="nav-footer" class="nav-footer" [ngClass]="{'light-mode': lightMode}">
@@ -243,7 +243,7 @@
             <a href=""><img class="social-icon" src="./../assets/images/in.svg" alt="linkedin" /></a>
           </div>
         </div>
-  
+
         <div id="link-footer">
           <div><a [ngClass]="{'light-title': lightMode}"  href="#">Inicio</a></div>
           <div><a [ngClass]="{'light-title': lightMode}"  href="#">Acerca de</a></div>
@@ -256,4 +256,3 @@
       </nav>
     </footer>
   </body>
-  
