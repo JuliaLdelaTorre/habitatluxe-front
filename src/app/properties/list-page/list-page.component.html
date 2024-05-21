@@ -5,7 +5,8 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div class="w-full flex flex-cols "
         *ngFor="let property of properties | slice:((currentPage-1)*pageSize):(currentPage*pageSize)">
-      <div class="w-full py-6 px-6 flex-grow hover:bg-gray-200 hover:shadow-sm transition duration-200 ease-in-out">
+      <div routerLink="/properties/:id"
+      class="w-full py-6 px-6 flex-grow hover:bg-gray-200 hover:shadow-sm transition duration-200 ease-in-out">
           <div class="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col">
             <div class="bg-cover bg-center h-56 p-4" [style.background-image]="'url(' + property.img + ')'">
               <div class="flex justify-end">
