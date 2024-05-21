@@ -11,6 +11,7 @@ import { LoginPageComponent } from './auth/pages/login-page/login-page.component
 import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
 import { AuthModule } from './auth/auth.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { PropertiesModule } from './properties/properties.module';
 
 
 
@@ -30,6 +31,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
         AppRoutingModule,
         HttpClientModule,
         SharedModule,
+        PropertiesModule,
         AuthModule
     ]
 })
