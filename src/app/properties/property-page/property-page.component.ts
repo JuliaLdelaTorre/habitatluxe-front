@@ -3,6 +3,7 @@ import { PropertiesService } from '../services/properties.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { delay, switchMap } from 'rxjs';
 import { Property } from '../interface/property.interface';
+import { PropertyResponse } from '../interface/propertyResponse.interface';
 
 @Component({
   selector: 'app-property-page',
@@ -11,8 +12,11 @@ import { Property } from '../interface/property.interface';
   ]
 })
 export class PropertyPageComponent implements OnInit {
-
+// cuando el componente se monta, hay un momento que no hay property, por eso sería nulo?.
   public property?: Property;
+  public currentImageIndex: number = 0;
+  public imageList: string[] = [];
+
 
   constructor(
     private propertiesService: PropertiesService,
@@ -22,43 +26,39 @@ export class PropertyPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params
-      .pipe(delay(500), switchMap(({ id }) => this.propertiesService.getPropertyById(id)),)
-      .subscribe(property => {
-        if (!property) this.router.navigateByUrl('/properties');
+      .pipe(switchMap(({ id }) => this.propertiesService.getPropertyById(id)),)
+      .subscribe( (response:any) => {
+        if (!response) {
+          this.router.navigateByUrl('/properties');
+        return;
+        }
+        this.property = response.data;
+        this.imageList = this.property?.images || []; // Check if this.property is defined before assigning its value to this.imageList
+        console.log('imagenes:', this.imageList);
 
-        this.property = property;
+       console.log('Propiedad:' , this.property);
           return;
 
       });
   }
 
-  // Carrusel
-  // Asumiendo que tienes un array de imágenes en tu propiedad
-  images = this.property!.img;
 
-  // Índice de la imagen actual
-  currentImageIndex = 0;
-
-  // Función para ir a la imagen siguiente
+  // Controles para el carrusel de imágenes
   nextImage() {
-    if (this.currentImageIndex < this.images!.length - 1) {
+    if (this.currentImageIndex < this.imageList.length - 1) {
       this.currentImageIndex++;
     } else {
-      this.currentImageIndex = 0;
+      this.currentImageIndex = 0; // Vuelve al inicio cuando llega al final
     }
   }
 
-  // Función para ir a la imagen anterior
-  prevImage() {
+  previousImage() {
     if (this.currentImageIndex > 0) {
       this.currentImageIndex--;
     } else {
-      this.currentImageIndex = this.images!.length - 1;
+      this.currentImageIndex = this.imageList.length - 1; // Vuelve al final cuando llega al inicio
     }
   }
-
-
-
 
 
 goBack(): void {

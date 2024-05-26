@@ -6,15 +6,9 @@ import { PropertyPageComponent } from './property-page/property-page.component';
 
 // localhost/properties/
 const routes: Routes = [
-  {
-    path: '',
-    component: ListPageComponent,
-    children: [
-      // si añado más rutas hijas, éste debe ir al final, porque si no tomará cualquier cosa como un id.
-      { path: ':id', component: PropertyPageComponent }, // localhost/properties/1
-    ]
-  }
-];
+  { path: '', component: ListPageComponent },
+ 
+]
 
 @NgModule({
   declarations: [],

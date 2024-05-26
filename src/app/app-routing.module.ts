@@ -22,14 +22,15 @@ const routes: Routes = [
     children: [
       // { path: 'login', component: LoginPageComponent },
       // { path: 'register', component: RegisterPageComponent },
-      { path: 'properties', component: ListPageComponent},
+      // { path: 'properties', component: ListPageComponent},
       { path: 'properties/:id', component: PropertyPageComponent},
 
       // Con carga perezosa, no se carga el módulo hasta que se navega a la ruta.
-      // { path: 'properties', loadChildren: () => import('./properties/properties.module').then(m => m.PropertiesModule) },
+      { path: 'properties', loadChildren: () => import('./properties/properties.module').then(m => m.PropertiesModule) },
       { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
       { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
       { path: 'auth', loadChildren: () => import ('./auth/auth.module').then(m => m.AuthModule) },
+
 
       // cualquier otra ruta que no esté arriba, redirigir a home.
       { path: '**', redirectTo: '/home' }
