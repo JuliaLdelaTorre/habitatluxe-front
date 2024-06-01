@@ -1,10 +1,13 @@
-// TODO: MODIFICAR POR INTERFAZ REAL EN CASA.
-
 export interface User {
-
-  id: number;
-  user: string;
-  email: string;
-
+  id:             number;
+  username:       string;
+  email:          string;
+  user_type:      UserType;
+  remember_token: null;
 }
 
+export enum UserType {
+  admin = 'admin',
+  normal_user = 'normal_user',
+  seller_user = 'seller_user'
+}

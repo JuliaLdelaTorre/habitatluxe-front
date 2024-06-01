@@ -1,38 +1,63 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/app/environments/environments';
 import { LoginResponse } from '../interfaces/loginResponse.interface';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
 export class AuthService {
 
   private readonly baseUrl: string = environment.baseUrl;
-  private http = inject(HttpClient);
 
-  // propiedades privadas para almacenar el estado de la autenticación.
-  // comienzan con _  sólo para indicar que son privadas.
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
-  // private _currentUser = signal<User | null>(null);
-  // private _authStatus = signal<AuthStatus>();
+  // LOGIN
+  login(email: string, password: string): Observable<LoginResponse> {
+    const url = `${this.baseUrl}/login`;
+    const body = { email, password };
+    return this.http.post<LoginResponse>(url, body)
+  }
+
+  // LOGOUT
+  logout(): Observable<boolean> {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/home']);
+    return of(true);
+  }
+
+  // IS LOGGED
+  isLogged(): boolean {
+    return localStorage.getItem('token') !== null;
+  }
+
+  //GET USER - devuelve el username del usuario logueado.
+  getUsername() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const currentUser = JSON.parse(user);
+      return currentUser.username;
+    }
+    return null;
+  }
+
+  // GET USER_TYPE
+  getUserType() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const currentUser = JSON.parse(user);
+      return currentUser.user_type;
+    }
+    return null;
+  }
+
+} // AuthService
 
 
-  constructor() { }
 
-  // login(email: string, password: string): Observable<boolean> {
-
-  //   const url = `${this.baseUrl}/auth/login`;
-  //   const body = { email, password };
-
-
-  //    return this.http.post<LoginResponse>(url, body)
-  //    .pipe(
-  //     tap( ({ user, token })  => {
-  //       this._
-  //     })
-  //    )
-
-
-  // }
-}
