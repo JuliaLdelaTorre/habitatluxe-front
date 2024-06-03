@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, AfterViewInit, HostListener, ViewChild } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +10,37 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor(private elementRef: ElementRef) { 
+  constructor(private elementRef: ElementRef,private authService: AuthService ) {
+
     this.lightModeSubject = new Subject<boolean>();
   }
+
   crossActive: boolean = false;
 
   lightMode: boolean = true;
-  lightModeSubject: Subject<boolean>; 
-  
+  lightModeSubject: Subject<boolean>;
+
+  public loggedUser = this.authService.isLogged();
+  public username: string | null = null;
+
+
 
 
   ngOnInit(): void {
     this.adjustAccordingToScreenSize();
+    this.username = this.authService.getUsername();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.loggedUser = false;
   }
 
 
   ngAfterViewInit(): void {
     this.initializeAnimation();
   }
-  
+
   private initializeAnimation(): void {
     const objectSVG = this.elementRef.nativeElement.querySelector('#objectSVG');
     objectSVG.addEventListener('load', () => {
