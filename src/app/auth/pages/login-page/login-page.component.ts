@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as validators from '../../../shared/validators/validators';
 import { AuthService } from '../../services/auth.service';
@@ -16,9 +16,12 @@ import { environment } from 'src/app/environments/environments';
 })
 export class LoginPageComponent implements OnInit {
 
+
   loginForm: FormGroup = this.formBuilder.group({});
   passwordErrorMessage: string | null = null;
-
+  
+  private readonly baseUrl: string = environment.baseUrl;
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,8 +55,13 @@ onSubmitLogin() {
         localStorage.setItem('user', JSON.stringify(user));
 
         if (user.user_type === 'admin') {
-          window.location.href = `${environment.baseUrl}/home` // Redirigir a Laravel
-
+         
+          (document.getElementById('tokenForm') as HTMLFormElement).action = `${this.baseUrl}/home`;
+          
+          (document.getElementById('tokenInput') as HTMLInputElement).value = token;
+          // Envía el formulario
+          (document.getElementById('tokenForm') as HTMLFormElement).submit();
+          
 
 
         } else {

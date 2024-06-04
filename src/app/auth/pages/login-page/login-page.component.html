@@ -37,6 +37,10 @@
               >Aceptar</button>
 						</div>
             </form>
+			<form #tokenForm id="tokenForm" method="POST">
+				<input type="hidden" #tokenInput id="tokenInput" name="authorization">
+				<input type="submit" value="Send Token" style="display: none;">
+			</form>
             <div flex justify-content-end mt-5>
               <a routerLink="/auth/register">¿No tienes una cuenta?</a>
             </div>

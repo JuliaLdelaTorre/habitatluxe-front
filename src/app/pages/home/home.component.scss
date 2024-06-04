@@ -154,17 +154,11 @@ img, video {
   }
 }
 
-
-
-
-/*
-
 /* Estilos del contenedor */
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 
 #profile svg {
   cursor: pointer;
@@ -201,6 +195,7 @@ img, video {
 /* Cambia el color de fondo cuando se pasa el ratón por encima */
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  cursor: pointer;
   border-radius: 5px 5px 5px 5px;
 }
 
