@@ -56,7 +56,7 @@ onSubmitLogin() {
 
         if (user.user_type === 'admin') {
          
-          (document.getElementById('tokenForm') as HTMLFormElement).action = `${this.baseUrl}/home`;
+          (document.getElementById('tokenForm') as HTMLFormElement).action = `${this.baseUrl}/loginAdmin`;
           
           (document.getElementById('tokenInput') as HTMLInputElement).value = token;
           // Envía el formulario
