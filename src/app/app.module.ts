@@ -12,6 +12,7 @@ import { RegisterPageComponent } from './auth/pages/register-page/register-page.
 import { AuthModule } from './auth/auth.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { PropertiesModule } from './properties/properties.module';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -21,6 +22,7 @@ import { PropertiesModule } from './properties/properties.module';
         AboutUsComponent,
         HomeComponent,
         MainLayoutComponent,
+        ContactComponent,
 
 
     ],

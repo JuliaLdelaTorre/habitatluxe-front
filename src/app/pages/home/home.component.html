@@ -46,7 +46,7 @@
                 </div>
                 <div class="listas">
                   <div class="barra1"></div>
-                  <a href="" class="link">Contacto</a>
+                  <a routerLink="/contact" class="link">Contacto</a>
                   <div class="barra2"></div>
                 </div>
                 <div *ngIf="loggedUser">Hola,  {{username}} </div>
@@ -230,9 +230,7 @@
           <p class="text-content paddingBottom-150">Rellena el formulario y un asesor se pondrá en contacto a la mayor
             brevedad</p>
           <div>
-            <form action="index.html">
-              <input class="button" type="submit" value="Contáctenos" />
-            </form>
+              <input routerLink="/contact" class="button" type="submit" value="Contáctenos" />
           </div>
         </div>
       </div>
