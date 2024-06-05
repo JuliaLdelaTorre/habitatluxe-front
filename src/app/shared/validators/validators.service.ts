@@ -34,17 +34,11 @@ export class ValidatorsService {
     return null;
   }
 
-
-
-
-
- mustMatch(control: AbstractControl): { [key: string]: boolean } | null {
-  const password = control.get('password');
-  const confirmPassword = control.get('password2');
-  if (!password || !confirmPassword) return null;
- console.log('passwords do not match', password?.value, confirmPassword?.value);
-  return password.value === confirmPassword.value ? null : { passwordsMismatch: true };
-
-}
+  mustMatch(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('password2');
+    if (!password || !confirmPassword) return null;
+    return password.value === confirmPassword.value ? null : { passwordsMismatch: true };
+  }
 
 }

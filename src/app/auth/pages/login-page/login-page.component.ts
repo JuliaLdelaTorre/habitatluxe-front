@@ -19,9 +19,9 @@ export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup = this.formBuilder.group({});
   passwordErrorMessage: string | null = null;
-  
+
   private readonly baseUrl: string = environment.baseUrl;
-  
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +41,13 @@ ngOnInit(): void {
   });
 }
 
+onBlur(): void {
+  const emailControl = this.loginForm.get('email');
+  if (emailControl) {
+    emailControl.markAsTouched();
+  }
+}
+
 onSubmitLogin() {
   if (this.loginForm && this.loginForm.valid) {
     const { email, password } = this.loginForm.value;
@@ -55,13 +62,13 @@ onSubmitLogin() {
         localStorage.setItem('user', JSON.stringify(user));
 
         if (user.user_type === 'admin') {
-         
+
           (document.getElementById('tokenForm') as HTMLFormElement).action = `${this.baseUrl}/loginAdmin`;
-          
+
           (document.getElementById('tokenInput') as HTMLInputElement).value = token;
           // Envía el formulario
           (document.getElementById('tokenForm') as HTMLFormElement).submit();
-          
+
 
 
         } else {
