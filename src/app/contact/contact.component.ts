@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ContactService } from './services/contact.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as valid from '../shared/validators/validators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 
 @Component({
@@ -12,11 +13,13 @@ import * as valid from '../shared/validators/validators';
 export class ContactComponent {
 
   public contactForm: FormGroup = this.fb.group({});
-
+  @ViewChild('successForm') successForm!: TemplateRef<any>
 
   constructor(
      private contactService: ContactService,
-     private fb: FormBuilder
+     private fb: FormBuilder,
+     public dialog: MatDialog,
+
     ) { }
 
   ngOnInit(): void {
@@ -29,17 +32,25 @@ export class ContactComponent {
   }
 
 
-sendForm() {
-  this.contactForm.markAllAsTouched();
-  if ( this.contactForm.valid ) {
-    const { name, phone, email, comment } = this.contactForm.value;
-    this.contactService.sendContactForm(name, phone, email, comment)
-    .subscribe( resp => {console.log(resp);} );
-    this.contactForm.reset();
-  } else {
-    console.log('Formulario no valido');
+  sendForm() {
+    this.contactForm.markAllAsTouched();
+    if ( this.contactForm.valid ) {
+      const { name, phone, email, comment } = this.contactForm.value;
+      this.contactService.sendContactForm(name, phone, email, comment)
+      .subscribe( resp => {console.log(resp);} );
+      this.contactForm.reset();
+
+      this.dialog.open(this.successForm);
+
+    } else {
+      console.log('Formulario no valido');
+    }
   }
-}
 
+  openDialog() {
+  const dialogForm = new MatDialogConfig();
+  dialogForm.disableClose = true;
+  this.dialog.open(this.successForm, dialogForm);
 
+  }
 }

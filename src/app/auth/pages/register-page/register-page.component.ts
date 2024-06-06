@@ -73,10 +73,10 @@ export class RegisterPageComponent implements OnInit {
 
     }
   }
-//TODO: REVISAR ESTILO DEL DIALOG.  
+//TODO: REVISAR ESTILO DEL DIALOG.
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.panelClass = 'custom-dialog';
+    dialogConfig.disableClose = true;
     this.dialog.open(this.successRegister, dialogConfig);
   }
 
