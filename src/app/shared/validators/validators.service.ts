@@ -16,29 +16,29 @@ export class ValidatorsService {
     const passwordNumber = "(?=.*[0-9])";
     const passwordSpecialChar = "(?=.*[!@#\$%\^&\*/])";
 
-    if (!password.value.match(passwordLength)) {
+    if (!password.value?.match(passwordLength)) {
       return 'La contraseña debe tener al menos 6 caracteres';
     }
-    if (!password.value.match(passwordLowercase)) {
+    if (!password.value?.match(passwordLowercase)) {
       return 'La contraseña debe tener al menos una letra minúscula';
     }
-    if (!password.value.match(passwordUppercase)) {
+    if (!password.value?.match(passwordUppercase)) {
       return 'La contraseña debe tener al menos una letra mayúscula';
     }
-    if (!password.value.match(passwordNumber)) {
+    if (!password.value?.match(passwordNumber)) {
       return 'La contraseña debe tener al menos un número';
     }
-    if (!password.value.match(passwordSpecialChar)) {
+    if (!password.value?.match(passwordSpecialChar)) {
       return 'La contraseña debe tener al menos un caracter especial';
     }
     return null;
   }
 
-  mustMatch(control: AbstractControl): { [key: string]: boolean } | null {
-    const password = control.get('password');
-    const confirmPassword = control.get('password2');
-    if (!password || !confirmPassword) return null;
-    return password.value === confirmPassword.value ? null : { passwordsMismatch: true };
-  }
+  // mustMatch(control: AbstractControl): { [key: string]: boolean } | null {
+  //   const password = control.get('password');
+  //   const confirmPassword = control.get('password2');
+  //   if (!password || !confirmPassword) return null;
+  //   return password.value === confirmPassword.value ? null : { passwordsMismatch: true };
+  // }
 
 }
