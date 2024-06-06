@@ -18,6 +18,7 @@ export class RegisterPageComponent implements OnInit {
   public passwordErrorMessage: string | null = null;
   public password_confirmationErrorMessage: string | null = null;
   @ViewChild('successRegister') successRegister!: TemplateRef<any>;
+  @ViewChild('failRegister') failRegister!: TemplateRef<any>;
 
   // dejo aqui para probar si me vale con el pattern, si ingresa menos de 6 caracteres
   //  password: ['', [Validators.required, Validators.minLength(6)]],
@@ -46,7 +47,7 @@ export class RegisterPageComponent implements OnInit {
       });
 
   }
-//TODO: añadir dialogo de confirmación de registro.
+
   onSubmitRegister(): void {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
@@ -66,6 +67,7 @@ export class RegisterPageComponent implements OnInit {
         },
         (error) => {
           console.error('Error durante el registro:', error);
+          this.dialog.open(this.failRegister);
         }
       );
     } else {
@@ -73,7 +75,7 @@ export class RegisterPageComponent implements OnInit {
 
     }
   }
-//TODO: REVISAR ESTILO DEL DIALOG.
+
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
