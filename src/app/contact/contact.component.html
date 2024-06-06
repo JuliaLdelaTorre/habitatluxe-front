@@ -21,7 +21,7 @@
       </div>
       <div class="mb-6 text-red-500">
         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Teléfono</label>
-        <input type="text" id="phone" formControlName="phone" class="shadow-sm bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Formatos permitidos: XXXXXXXXX - +XX XXXXXXXXX" required>
+        <input type="text" id="phone" formControlName="phone" class="shadow-sm bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Inserta tu número de teléfono" required>
         <div *ngIf="contactForm.get('phone')?.invalid && (contactForm.get('phone')?.dirty || contactForm.get('phone')?.touched)">
           <div *ngIf="contactForm.get('phone')?.errors?.['required']">El teléfono es requerido</div>
           <div *ngIf="contactForm.get('phone')?.errors?.['pattern']">El formato del teléfono no es correcto</div>

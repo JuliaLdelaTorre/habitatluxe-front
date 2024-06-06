@@ -4,6 +4,7 @@ import { catchError, Observable, of, pipe } from 'rxjs';
 import { environment } from 'src/app/environments/environments';
 import { Property } from '../interface/property.interface';
 import { tap } from 'rxjs/operators';
+import { Favorite } from '../interface/favorite.interface';
 
 @Injectable({providedIn: 'root'})
 export class PropertiesService {
@@ -23,9 +24,9 @@ export class PropertiesService {
   getProperties(): Observable<Property[]> {
     const url = `${this.baseUrl}/properties`;
     return this.http.get<Property[]>(url)
-    .pipe(
-      tap( respuesta => console.log(respuesta) )
-    );
+    // .pipe(
+    //   tap( respuesta => console.log(respuesta) )
+    // );
   }
 
 
@@ -42,5 +43,18 @@ export class PropertiesService {
     );
   }
 
-}
+  // POST favorite.
+  saveFavorite(property_id:number, user_id:number): Observable<Favorite> | undefined{
+    const url = `${this.baseUrl}/favorites`;
+    const body = {property_id, user_id};
+    console.log('Guardando en favoritos: ', body);
+    let respuesta = this.http.post<Favorite>(url, body);
+    console.log('respuesta de guardar en favoritos: ', respuesta);
+    return respuesta;
+  }
+
+
+
+
+} // end class
 

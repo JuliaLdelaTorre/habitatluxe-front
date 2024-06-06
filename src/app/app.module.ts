@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,9 @@ import { AuthModule } from './auth/auth.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { PropertiesModule } from './properties/properties.module';
 import { ContactComponent } from './contact/contact.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -23,6 +27,7 @@ import { ContactComponent } from './contact/contact.component';
         HomeComponent,
         MainLayoutComponent,
         ContactComponent,
+        ProfileComponent,
 
 
     ],
@@ -34,7 +39,11 @@ import { ContactComponent } from './contact/contact.component';
         HttpClientModule,
         SharedModule,
         PropertiesModule,
-        AuthModule
+        AuthModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        BrowserAnimationsModule
+
     ]
 })
 export class AppModule { }
