@@ -14,11 +14,12 @@ export class ContactService {
   constructor( private http: HttpClient) { }
 
   // POST del formulario de contacto.
-  sendContactForm( name: string, phone: string, email: string, comment: string ): Observable<Contact> {
-    const body = { name, phone, email, comment };
-    const url = `${this.baseUrl}/form`;
-    return this.http.post<Contact>(url, body);
-  }
+ sendContactForm(name: string, phone: string, email: string, comment: string): Observable<Contact> {
+  const body = { name, phone, email, comment };
+  const url = `${this.baseUrl}/form`;
+  // Ajustar la llamada para incluir { observe: 'response' }
+  return this.http.post<Contact>(url, body);
+}
 
 
 
