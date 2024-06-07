@@ -1,76 +1,84 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { environment } from 'src/app/environments/environments';
-import { LoginResponse } from '../interfaces/loginResponse.interface';
 import { Router } from '@angular/router';
+
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+
+import { environment } from 'src/app/environments/environments';
+
+import { LoginResponse, User } from '../interfaces/loginResponse.interface';
 import { Register } from '../interfaces/register.interface';
+import { LoginData } from '../interfaces/loginData.interface';
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthService {
 
   private readonly baseUrl: string = environment.baseUrl;
+  private readonly token = 'token';
+  private readonly currentUser = 'currentUser';
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private currentUserSubject = new BehaviorSubject<User | null>(this.getCurrentUser());
 
-  // LOGIN
-  login(email: string, password: string): Observable<LoginResponse> {
+  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
+  public currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
+
+  constructor(private http: HttpClient, private router: Router) { }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem(this.token);
+  }
+
+  private getCurrentUser(): User | null {
+    const user = localStorage.getItem(this.currentUser);
+    return user ? JSON.parse(user) : null;
+  }
+
+
+  login(loginData: LoginData): Observable<LoginResponse> {
     const url = `${this.baseUrl}/login`;
-    const body = { email, password };
-    return this.http.post<LoginResponse>(url, body)
+    return this.http.post<LoginResponse>(url, loginData)
       .pipe(
         tap((resp: LoginResponse) => {
-          localStorage.setItem('token', resp.token);
-          localStorage.setItem('user', JSON.stringify(resp.user));
+          localStorage.setItem(this.token, resp.token);
+          localStorage.setItem('currentUser', JSON.stringify(resp.user));
+          this.isAuthenticatedSubject.next(true);
+          this.currentUserSubject.next(resp.user);
         })
       );
-    }
+  }
 
-  // REGISTER
+
   register(username: string, email: string, password: string): Observable<Register> {
     const url = `${this.baseUrl}/register`;
     const body = { username, email, password };
     return this.http.post<Register>(url, body)
   }
 
-  // LOGOUT
-  logout(): Observable<boolean> {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+  logout(): void {
+    localStorage.removeItem(this.token);
+    localStorage.removeItem(this.currentUser);
+    this.isAuthenticatedSubject.next(false);
+    this.currentUserSubject.next(null);
     this.router.navigate(['/home']);
-    return of(true);
   }
 
-  // IS LOGGED
-  isLogged(): boolean {
-    return localStorage.getItem('token') !== null;
+
+  getToken(): string | null {
+    return localStorage.getItem(this.token);
   }
 
-  //GET USER - devuelve el username del usuario logueado.
-  getUsername() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      const currentUser = JSON.parse(user);
-      return currentUser.username;
-    }
-    return null;
+  getUserName(): string | null {
+    const currentUser = this.currentUserSubject.value;
+    return currentUser ? currentUser.username : null;
   }
 
-  // GET USER_TYPE
-  getUserType() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      const currentUser = JSON.parse(user);
-      return currentUser.user_type;
-    }
-    return null;
+  getUserType():string | null {
+    const currentUser = this.currentUserSubject.value;
+    return currentUser ? currentUser.user_type : null;
   }
-
 } // AuthService
 
 

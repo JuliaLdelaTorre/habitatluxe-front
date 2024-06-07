@@ -49,19 +49,19 @@
                   <a routerLink="/contact" class="link">Contacto</a>
                   <div class="barra2"></div>
                 </div>
-                <div *ngIf="loggedUser">Hola,  {{username}} </div>
+                <div *ngIf="(isAuthenticated$ | async)" style="color: #090B0F; font-size: 1.5em;">Hola,  {{userName}} </div>
                   <div class="dropdown">
                       <!-- Botón que despliega el menú -->
                       <button class="dropdown-button">
                           <object id="profile" type="image/svg+xml" data="./../assets/images/user.svg" width="80"></object>
                       </button>
                       <!-- Contenido del menú si NO hay usuario logueado-->
-                      <div *ngIf="!(loggedUser)" class="dropdown-content">
+                      <div *ngIf="!(isAuthenticated$ | async)" class="dropdown-content">
                         <a routerLink="/auth/login"><i class="fas fa-user-circle mr-2 text-lg"></i>Iniciar sesión</a>
                         <a routerLink="/auth/register"><i class="far fa-user mr-2 text-lg"></i>Crear cuenta</a>
                       </div>
                        <!-- Contenido del menú si hay usuario logueado-->
-                       <div *ngIf="loggedUser" class="dropdown-content">
+                       <div *ngIf="(isAuthenticated$ | async)" class="dropdown-content">
                         <a routerLink="/profile"><i class="fas fa-user-circle mr-2 text-lg"></i>Perfil</a>
                         <a (click)="logout()"><i class="fas fa-sign-out-alt mr-2 text-lg"></i>Cerrar sesión</a>
                        </div>

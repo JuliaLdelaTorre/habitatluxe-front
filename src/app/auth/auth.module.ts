@@ -11,7 +11,6 @@ import { AuthRoutingModule } from '../auth-routing/auth-routing.module';
   declarations: [
     LoginPageComponent,
     RegisterPageComponent,
-
   ],
   imports: [
     CommonModule,

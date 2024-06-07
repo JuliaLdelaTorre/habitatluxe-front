@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, AfterViewInit, HostListener, ViewChild } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -10,8 +10,11 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor(private elementRef: ElementRef,private authService: AuthService ) {
+  isAuthenticated$ = this.authService.isAuthenticated$;
+  currentUser$ = this.authService.currentUser$;
+  public userName: string | null = null;
 
+  constructor(private elementRef: ElementRef,private authService: AuthService ) {
     this.lightModeSubject = new Subject<boolean>();
   }
 
@@ -20,20 +23,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   lightMode: boolean = true;
   lightModeSubject: Subject<boolean>;
 
-  public loggedUser = this.authService.isLogged();
-  public username: string | null = null;
-
-
-
-
   ngOnInit(): void {
     this.adjustAccordingToScreenSize();
-    this.username = this.authService.getUsername();
+    this.userName = this.authService.getUserName();
   }
 
   logout() {
     this.authService.logout();
-    this.loggedUser = false;
   }
 
 
