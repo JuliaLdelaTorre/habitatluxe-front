@@ -16,7 +16,7 @@ import { PropertiesModule } from './properties/properties.module';
 import { ContactComponent } from './contact/contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileComponent } from './profile/profile.component';
+
 
 
 
@@ -27,7 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
         HomeComponent,
         MainLayoutComponent,
         ContactComponent,
-        ProfileComponent,
+
 
 
     ],
