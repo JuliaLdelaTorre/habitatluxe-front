@@ -10,6 +10,7 @@ import { environment } from 'src/app/environments/environments';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginData } from '../../interfaces/loginData.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -18,6 +19,8 @@ import { LoginData } from '../../interfaces/loginData.interface';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+
+  showEmails: boolean = false;
 
 
   loginForm: FormGroup = this.formBuilder.group({});
@@ -30,6 +33,7 @@ export class LoginPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private validatorsService: ValidatorsService,
+    private cookieService: CookieService,
     private router: Router,
     public dialog: MatDialog
   ) { }
@@ -40,8 +44,16 @@ export class LoginPageComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(validators.email)]],
       password: ['', [Validators.required]],
-      rememberMe: [false]
+      remember: [false]
     });
+
+    const rememberToken = this.cookieService.get('remember_token');
+    console.log(rememberToken);
+    if (!rememberToken) {
+      console.log('No hay token en la cookie');}
+
+    this.getRememberEmails();
+    this.autoLogin();
 
     this.loginForm.controls['password'].valueChanges.subscribe(() => {
       this.passwordErrorMessage = this.validatorsService.isValidPassField(this.loginForm, 'password');
@@ -55,9 +67,34 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
+  getRememberEmails(): void {
+    const emails = localStorage.getItem('emails');
+    if (emails) {
+      this.showEmails = true;
+    }
+  }
+
+  // Verifica si hay credenciales almacenadas en el LocalStorage
+  autoLogin() {
+    const storedEmail = localStorage.getItem('email');
+    const storedPassword = localStorage.getItem('password');
+    if (storedEmail && storedPassword) {
+      this.loginForm?.patchValue({
+        email: storedEmail,
+        password: storedPassword,
+        remember: true // Marca automáticamente la casilla "Recuérdame"
+      });
+      // Envía automáticamente la solicitud de inicio de sesión
+      this.onSubmitLogin();
+    }
+  }
+
+
+
   onSubmitLogin() {
     if (this.loginForm && this.loginForm.valid) {
-      const LoginData= this.loginForm.value;
+      const LoginData = this.loginForm.value;
+      console.log(LoginData);
       this.authService.login(LoginData).subscribe(
         (resp: LoginResponse) => {
           this.router.navigate(['/home']);
@@ -77,48 +114,6 @@ export class LoginPageComponent implements OnInit {
     }
   }
 }
-
-
-//TODO: hacer login, y una vez en perfil de admin, redirigir a Laravel.
-// onSubmitLogin() {
-//   if (this.loginForm && this.loginForm.valid) {
-//     const { email, password, rememberMe } = this.loginForm.value;
-//     const userType = 'admin_user';
-//     this.authService.login(email, password, userType).subscribe(
-//       (resp: LoginResponse) => {
-//         const token = resp.token;
-//         const user = resp.user;
-
-//         if (rememberMe) {
-//           localStorage.setItem('token', token);
-//           localStorage.setItem('user', JSON.stringify(user));
-//         }
-
-
-//         localStorage.setItem('token', token);
-//         localStorage.setItem('user', JSON.stringify(user));
-
-//         if (user.user_type === 'admin') {
-
-//           (document.getElementById('tokenForm') as HTMLFormElement).action = `${this.baseUrl}/loginAdmin`;
-
-//           (document.getElementById('tokenInput') as HTMLInputElement).value = token;
-//           // Envía el formulario
-//           (document.getElementById('tokenForm') as HTMLFormElement).submit();
-
-
-
-//         } else {
-//           this.router.navigate(['/home']); // Redirigir a la ruta de Angular para usuarios normales
-//         }
-//       },
-//       (error) => {
-//         console.log(error);
-//       }
-//     );
-//   }
-// }
-
 
 
 

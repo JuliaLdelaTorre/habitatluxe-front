@@ -21,16 +21,13 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-      // { path: 'login', component: LoginPageComponent },
-      // { path: 'register', component: RegisterPageComponent },
-      // { path: 'properties', component: ListPageComponent},
+
       { path: 'properties/:id', component: PropertyPageComponent},
       { path: 'contact', component: ContactComponent},
-      //TODO: { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]}
+
 
       // Con carga perezosa, no se carga el módulo hasta que se navega a la ruta.
       { path: 'properties', loadChildren: () => import('./properties/properties.module').then(m => m.PropertiesModule) },
-
       { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
       { path: 'auth', loadChildren: () => import ('./auth/auth.module').then(m => m.AuthModule) },
 

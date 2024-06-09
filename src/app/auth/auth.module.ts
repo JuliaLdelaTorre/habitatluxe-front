@@ -4,6 +4,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from '../auth-routing/auth-routing.module';
+import { ProfilePageComponent } from './pages/profile-page/profile.component';
+import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
+import { AppointmentPageComponent } from './pages/appointment-page/appointment-page.component';
 
 
 
@@ -11,6 +14,9 @@ import { AuthRoutingModule } from '../auth-routing/auth-routing.module';
   declarations: [
     LoginPageComponent,
     RegisterPageComponent,
+    ProfilePageComponent,
+    FavoritesPageComponent,
+    AppointmentPageComponent
   ],
   imports: [
     CommonModule,

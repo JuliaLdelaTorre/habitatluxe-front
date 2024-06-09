@@ -13,7 +13,8 @@
             <!-- Formulario reactivo -->
             <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
               <div class="relative">
-                <input formControlName="email" autocomplete="off" id="email" name="email" (blur)="onBlur()" type="text"
+                <input formControlName="email" autocomplete="email" id="email" name="email" (blur)="onBlur()" type="text"
+                (mouseover)="showEmails = true" (mouseleave)="showEmails = false"
                   class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                   placeholder="Email" />
                 <label for="email"
@@ -43,14 +44,14 @@
                   (click)="onSubmitLogin()">Aceptar</button>
               </div>
               <div class="mt-5">
-              <input type="checkbox" id="rememberMe" formControlName="rememberMe">
-              <label for="rememberMe">Recuérdame</label>
+              <input type="checkbox" id="remember" formControlName="remember">
+              <label for="remember">Recuérdame</label>
               </div>
             </form>
-            <form #tokenForm id="tokenForm" method="POST">
+            <!-- <form #tokenForm id="tokenForm" method="POST">
               <input type="hidden" #tokenInput id="tokenInput" name="authorization">
               <input type="submit" value="Send Token" style="display: none;">
-            </form>
+            </form> -->
             <div flex justify-content-end mt-5>
               <a routerLink="/auth/register">¿No tienes una cuenta?</a>
             </div>
