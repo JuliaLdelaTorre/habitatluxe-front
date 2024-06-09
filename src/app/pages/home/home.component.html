@@ -62,7 +62,8 @@
                       </div>
                        <!-- Contenido del menú si hay usuario logueado-->
                        <div *ngIf="(isAuthenticated$ | async)" class="dropdown-content">
-                        <a routerLink="/profile"><i class="fas fa-user-circle mr-2 text-lg"></i>Perfil</a>
+                        <a routerLink="/auth/profile"><i class="fas fa-user-circle mr-2 text-lg"></i>Perfil</a>
+                        <a routerLink="/auth/favorites"><i class="fas fa-solid fa-heart mr-2 text-lg"></i>Favoritos</a>
                         <a (click)="logout()"><i class="fas fa-sign-out-alt mr-2 text-lg"></i>Cerrar sesión</a>
                        </div>
 

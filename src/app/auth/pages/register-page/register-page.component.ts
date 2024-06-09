@@ -30,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.pattern(validators.name)]],
+      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(validators.email)]],
       password: ['', [Validators.required]],
       password_confirmation: ['', [Validators.required]],

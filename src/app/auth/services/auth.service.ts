@@ -11,6 +11,7 @@ import { LoginResponse, User } from '../interfaces/loginResponse.interface';
 import { Register } from '../interfaces/register.interface';
 import { LoginData } from '../interfaces/loginData.interface';
 
+
 @Injectable({ providedIn: 'root' })
 
 export class AuthService {
