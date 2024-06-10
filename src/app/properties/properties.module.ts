@@ -6,13 +6,15 @@ import { SharedModule } from '../shared/shared.module';
 import { PropertyPageComponent } from './property-page/property-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { TruncatePipe } from '../shared/pipes/truncatePipe';
 
 
 
 @NgModule({
   declarations: [
     ListPageComponent,
-    PropertyPageComponent
+    PropertyPageComponent,
+    TruncatePipe
   ],
   imports: [
     CommonModule,
