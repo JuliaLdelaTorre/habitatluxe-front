@@ -1,8 +1,10 @@
+
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthService } from "./auth.service";
 import { environment } from "src/app/environments/environments";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Favorites } from "src/app/auth/interfaces/favorites.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +15,19 @@ export class FavoriteService {
 
   private readonly baseUrl: string = environment.baseUrl;
 
- getAllFavorites():Observable<any> {
+ getAllFavorites():Observable<Favorites[]> {
   const url = `${this.baseUrl}/favorite`;
-  return this.http.get(url);
+  return this.http.get<Favorites[]>(url);
 }
 
-addFavorite(property_id: number,):Observable<any> {
+addFavorite(property_id: number,):Observable<Favorites[]> {
   const url = `${this.baseUrl}/favorite`;
   const body = { property_id };
-  return this.http.post(url, body);
+  return this.http.post<Favorites[]>(url, body);
 }
 
-deleteFavorite(id: number):Observable<any> {
+deleteFavorite(id: number):Observable<Favorites[]> {
   const url = `${this.baseUrl}/favorite/${id}`;
-  return this.http.delete(url);
+  return this.http.delete<Favorites[]>(url);
 }
 }

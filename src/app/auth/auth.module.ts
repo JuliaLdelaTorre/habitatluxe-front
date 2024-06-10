@@ -8,6 +8,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { AppointmentPageComponent } from './pages/appointment-page/appointment-page.component';
 import { PropertiesModule } from "../properties/properties.module";
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 
@@ -18,7 +19,8 @@ import { PropertiesModule } from "../properties/properties.module";
         RegisterPageComponent,
         ProfilePageComponent,
         FavoritesPageComponent,
-        AppointmentPageComponent
+        AppointmentPageComponent,
+        AdminComponent
     ],
     imports: [
         CommonModule,

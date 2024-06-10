@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogPageComponent } from './pages/blog-page/blog-page.component';
-import { BlogRoutingModule } from './routing/blog-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -11,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    BlogRoutingModule
+
   ]
 })
 export class BlogModule { }

@@ -13,8 +13,6 @@ export class BlogPageComponent implements OnInit{
 
   constructor( private blogService: BlogService ) { }
 
-
-//objeto - con backend laravel.
   ngOnInit(): void {
     this.blogService.getBlog()
     .subscribe((response: any) => {

@@ -97,7 +97,18 @@ export class LoginPageComponent implements OnInit {
       console.log(LoginData);
       this.authService.login(LoginData).subscribe(
         (resp: LoginResponse) => {
-          this.router.navigate(['/home']);
+          const userType = this.authService.getUserType();
+          console.log('usertype: ', userType);
+          if ( userType === 'admin') {
+            this.router.navigate(['/auth/admin']);
+          } else if ( userType === 'normal_user') {
+            this.router.navigate(['/home']);
+          } else if ( userType === 'seller_user') {
+            this.router.navigate(['/home']); // Cambiar a la ruta de vendedor.
+          } else {
+            this.router.navigate(['/home']);
+          }
+          
         },
         (error: HttpErrorResponse) => {
           console.error(error);

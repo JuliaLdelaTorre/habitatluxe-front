@@ -7,6 +7,8 @@ import { RegisterPageComponent } from '../auth/pages/register-page/register-page
 import { ProfilePageComponent } from '../auth/pages/profile-page/profile.component';
 import { FavoritesPageComponent } from '../auth/pages/favorites-page/favorites-page.component';
 import { AppointmentPageComponent } from '../auth/pages/appointment-page/appointment-page.component';
+import { RoleGuard } from '../auth/guards/role.guard';
+import { AdminComponent } from '../auth/pages/admin/admin.component';
 
 
 //localhost/auth/
@@ -19,7 +21,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
       { path: 'favorites', component: FavoritesPageComponent, canActivate: [AuthGuard]},
       { path: 'appointments', component: AppointmentPageComponent, canActivate: [AuthGuard]},
-
+      { path: 'admin',component: AdminComponent,canActivate: [RoleGuard],data: { expectedRole: 'admin'}},
       { path: '**', redirectTo: 'home' }
     ]
   }

@@ -23,6 +23,7 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   private currentUserSubject = new BehaviorSubject<User | null>(this.getCurrentUser());
 
+
   public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
   public currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
 
@@ -39,7 +40,7 @@ export class AuthService {
   }
 
   // devuelve el usuario actual.
-  private getCurrentUser(): User | null {
+  public getCurrentUser(): User | null {
     const user = localStorage.getItem(this.currentUser);
     return user ? JSON.parse(user) : null;
   }
@@ -62,10 +63,7 @@ export class AuthService {
   login(loginData: LoginData): Observable<LoginResponse> {
     const url = `${this.baseUrl}/login`;
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      withCredentials: true 
+      withCredentials: true
     };
     return this.http.post<LoginResponse>(url, loginData, httpOptions)
       .pipe(
@@ -86,6 +84,7 @@ export class AuthService {
   }
 
   logout(): void {
+    localStorage.clear();
     localStorage.removeItem(this.token);
     localStorage.removeItem(this.currentUser);
     this.isAuthenticatedSubject.next(false);
