@@ -1,7 +1,7 @@
-<div class="container relative px-2 pt-2 mx-auto mb-12">
+<div class="container relative px-2 pt-4 mx-auto mb-12">
   <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Propiedades en venta</h1>
 
-  <body class="font-sans flex justify-center items-center pt-10">
+  <body class="font-sans flex justify-center items-center pt-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div class="w-full flex flex-cols "
         *ngFor="let property of properties | slice:((currentPage-1)*pageSize):(currentPage*pageSize)">
@@ -10,6 +10,7 @@
           <div class="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col">
             <div class="bg-cover bg-center h-56 p-4" [style.background-image]="'url(' + property.img + ')'">
               <div class="flex justify-end">
+                <!-- Icono corazón -->
                 <div (click)="save(property.id)" class="transition duration-500 ease-in-out transform hover:scale-125">
                 <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path
@@ -21,8 +22,13 @@
             </div>
             <div class="p-4 flex-grow">
               <p class="uppercase tracking-wide text-sm font-bold text-gray-700">• {{ property.property_name }}</p>
-              <p class="text-3xl text-gray-900">{{property.price}} €</p>
-              <p class="text-gray-700 flex-grow overflow-hidden overflow-x-auto">{{ property.description }}</p>
+              <p class="text-3xl text-gray-900">{{property.price | currency:'EUR':'symbol-narrow' }}</p>
+              <p class="text-gray-700 flex-grow overflow-hidden overflow-x-auto" *ngIf="property.showMore; else shortDescription">{{ property.description }}</p>
+              <ng-template #shortDescription>
+                <p class="text-gray-700 flex-grow overflow-hidden overflow-x-auto">{{ property.description | truncate }}</p>
+                <a class="text-gray-900 font-bold" (click)="toggleShowMore($event, property)">Leer más</a>
+              </ng-template>
+              <a class="text-slate-900 font-bold" *ngIf="property.showMore" (click)="toggleShowMore($event, property)">Leer menos</a>
             </div>
             <div class="flex p-4 border-t border-gray-300 text-gray-700">
               <div class="flex-1 inline-flex items-center">

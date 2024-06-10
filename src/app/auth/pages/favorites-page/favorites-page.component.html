@@ -1,12 +1,12 @@
-<div class="container">
-  <h1>¡Bienvenido, Julia!</h1>
+<div class="container mx-auto">
+  <h1>¡Bienvenido, {{userName}}!</h1>
 
-  <h2>Tus casas favoritas</h2>
+  <h2 *ngIf="favorites.length > 0">Tus casas favoritas</h2>
+  <h2 *ngIf="favorites.length === 0">Aún no tienes casas favoritas</h2>
 
   <div class="house-list">
     <!-- Aquí se mostrarán las casas favoritas -->
   </div>
-
   <div class="pagination">
     <!-- Aquí se mostrará la paginación -->
   </div>

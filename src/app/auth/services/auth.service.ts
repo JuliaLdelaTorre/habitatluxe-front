@@ -28,15 +28,36 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  // devuelve true si hay token.
   private hasToken(): boolean {
     return !!localStorage.getItem(this.token);
   }
 
+  // devuelve el valor del token
+  getToken(): string | null {
+    return localStorage.getItem(this.token);
+  }
+
+  // devuelve el usuario actual.
   private getCurrentUser(): User | null {
     const user = localStorage.getItem(this.currentUser);
     return user ? JSON.parse(user) : null;
   }
 
+  getUserName(): string | null {
+    const currentUser = this.currentUserSubject.value;
+    return currentUser ? currentUser.username : null;
+  }
+
+  getUserId(): number | null {
+    const currentUser = this.currentUserSubject.value;
+    return currentUser ? currentUser.id : null;
+  }
+
+  getUserType(): string | null {
+    const currentUser = this.currentUserSubject.value;
+    return currentUser ? currentUser.user_type : null;
+  }
 
   login(loginData: LoginData): Observable<LoginResponse> {
     const url = `${this.baseUrl}/login`;
@@ -64,21 +85,6 @@ export class AuthService {
     this.isAuthenticatedSubject.next(false);
     this.currentUserSubject.next(null);
     this.router.navigate(['/home']);
-  }
-
-
-  getToken(): string | null {
-    return localStorage.getItem(this.token);
-  }
-
-  getUserName(): string | null {
-    const currentUser = this.currentUserSubject.value;
-    return currentUser ? currentUser.username : null;
-  }
-
-  getUserType():string | null {
-    const currentUser = this.currentUserSubject.value;
-    return currentUser ? currentUser.user_type : null;
   }
 } // AuthService
 
