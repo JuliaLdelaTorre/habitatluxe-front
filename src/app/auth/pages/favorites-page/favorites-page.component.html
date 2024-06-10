@@ -5,9 +5,7 @@
   <h2 *ngIf="favorites.length === 0">Aún no tienes casas favoritas</h2>
 
   <div class="house-list">
-    <!-- Aquí se mostrarán las casas favoritas -->
+    <app-properties [properties]="favorites"></app-properties>
   </div>
-  <div class="pagination">
-    <!-- Aquí se mostrará la paginación -->
-  </div>
+
 </div>

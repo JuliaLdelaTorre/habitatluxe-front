@@ -7,6 +7,9 @@ import { PropertyPageComponent } from './property-page/property-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TruncatePipe } from '../shared/pipes/truncatePipe';
+import { PropertiesComponent } from './components/properties.component';
+
+
 
 
 
@@ -14,7 +17,11 @@ import { TruncatePipe } from '../shared/pipes/truncatePipe';
   declarations: [
     ListPageComponent,
     PropertyPageComponent,
+    PropertiesComponent,
     TruncatePipe
+  ],
+  exports: [
+    PropertiesComponent
   ],
   imports: [
     CommonModule,

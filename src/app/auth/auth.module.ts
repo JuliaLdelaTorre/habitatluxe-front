@@ -7,22 +7,24 @@ import { AuthRoutingModule } from '../auth-routing/auth-routing.module';
 import { ProfilePageComponent } from './pages/profile-page/profile.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { AppointmentPageComponent } from './pages/appointment-page/appointment-page.component';
+import { PropertiesModule } from "../properties/properties.module";
+
 
 
 
 @NgModule({
-  declarations: [
-    LoginPageComponent,
-    RegisterPageComponent,
-    ProfilePageComponent,
-    FavoritesPageComponent,
-    AppointmentPageComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    AuthRoutingModule
-
-  ]
+    declarations: [
+        LoginPageComponent,
+        RegisterPageComponent,
+        ProfilePageComponent,
+        FavoritesPageComponent,
+        AppointmentPageComponent
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        AuthRoutingModule,
+        PropertiesModule
+    ]
 })
 export class AuthModule { }
