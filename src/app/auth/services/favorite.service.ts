@@ -29,7 +29,10 @@ export class FavoriteService {
   addFavorite(property_id: number,) {
     const url = `${this.baseUrl}/favorite`;
     const body = { property_id};
-    return this.http.post(url, body);
+    const token = this.authService.getToken();
+    console.log("token gueradado aqui", token);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(url, body, { headers } );
   }
 
   deleteFavorite(id: number) {
