@@ -128,19 +128,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   pressBars() {
     document.body.style.overflowY = "hidden";
-    document.getElementById("container")!.style.height = "100vh";
+    document.getElementById("container")!.classList.add('nav-header__container--expanded');
     document.getElementById("bars")!.style.display = "none";
     document.getElementById("cross")!.style.display = "block";
     this.crossActive = true;
-    document.getElementById("list-container")!.style.top = "0%";
+    document.getElementById("list-container")!.classList.add('nav-header__container__list__container--expanded', 'nav-header__container__list--visible');
   }
 
   pressCross() {
     document.body.style.overflowY = "auto";
+    document.getElementById("container")!.classList.remove('nav-header__container--expanded');
     document.getElementById("bars")!.style.display = "block";
     document.getElementById("cross")!.style.display = "none";
-    document.getElementById("container")!.style.height = "160px";
-    document.getElementById("container")!.style.transition = "1s";
+    this.crossActive = false;
+    document.getElementById("list-container")!.classList.remove('nav-header__container__list__container--expanded', 'nav-header__container__list--visible');
   }
 
   @HostListener('window:resize', ['$event'])
@@ -157,10 +158,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     } else {
       document.body.style.overflowY = "auto";
-      document.getElementById("container")!.style.height = "100px";
+      document.getElementById("container")!.classList.remove('nav-header__container--expanded');
       document.getElementById("cross")!.style.display = "none";
       this.crossActive = false;
-      document.getElementById("list-container")!.style.top = "-100%";
+      document.getElementById("list-container")!.classList.remove('nav-header__container__list__container--expanded', 'nav-header__container__list--visible');
       document.getElementById("bars")!.style.display = "none";
     }
   }
@@ -171,6 +172,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.pressCross();
     }
   }
+
+
   @ViewChild('moon') moonImg!: ElementRef;
   @ViewChild('sun') sunImg!: ElementRef;
 

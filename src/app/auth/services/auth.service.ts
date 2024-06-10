@@ -61,7 +61,13 @@ export class AuthService {
 
   login(loginData: LoginData): Observable<LoginResponse> {
     const url = `${this.baseUrl}/login`;
-    return this.http.post<LoginResponse>(url, loginData)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      withCredentials: true 
+    };
+    return this.http.post<LoginResponse>(url, loginData, httpOptions)
       .pipe(
         tap((resp: LoginResponse) => {
           localStorage.setItem(this.token, resp.token);
