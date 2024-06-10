@@ -6,6 +6,7 @@ import { environment } from 'src/app/environments/environments';
 import { FavoriteService } from '../../services/favorite.service';
 import { PropertiesService } from 'src/app/properties/services/properties.service';
 import { Property } from 'src/app/properties/interface/property.interface';
+import { Favorite } from 'src/app/properties/interface/favorite.interface';
 
 @Component({
   selector: 'auth-favorites-page',
@@ -15,7 +16,7 @@ import { Property } from 'src/app/properties/interface/property.interface';
 export class FavoritesPageComponent implements OnInit {
 
 
-  public favorites: Favorites[] = [];
+  public favorites: Property[] = [];
   public properties: Property [] = [];
   public property_id: number = 0;
   public user_id: number =  0;
@@ -32,7 +33,7 @@ export class FavoritesPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getFavorite();
+    this.getFavorite();
     this.userName = this.authService.getUserName() ?? '';
   }
 
@@ -51,7 +52,15 @@ export class FavoritesPageComponent implements OnInit {
 getFavorite() {
   this.favoriteService.getAllFavorites().subscribe(
     (response: any) => {
-      this.favorites = response.data;
+      const favoriteIds = response.data.map((favorite: Favorite) => favorite.property_id);
+      this.propertiesService.getProperties().subscribe(
+        (response: any) => {
+          this.favorites = response.data.filter((property: Property) => favoriteIds.includes(property.id));
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     },
     (error) => {
       console.error(error);

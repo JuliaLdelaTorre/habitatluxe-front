@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FavoriteService } from './auth/services/favorite.service';
 import { AuthService } from './auth/services/auth.service';
 import { AuthInterceptor } from './auth/interceptor/interceptor';
+import { PropertiesComponent } from './properties/components/properties.component';
 
 
 
@@ -30,6 +31,7 @@ import { AuthInterceptor } from './auth/interceptor/interceptor';
         HomeComponent,
         MainLayoutComponent,
         ContactComponent,
+        
 
 
 
@@ -48,7 +50,8 @@ import { AuthInterceptor } from './auth/interceptor/interceptor';
         AuthModule,
         ReactiveFormsModule,
         MatDialogModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+
 
     ]
 })
