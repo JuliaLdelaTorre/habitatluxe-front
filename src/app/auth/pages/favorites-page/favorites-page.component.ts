@@ -33,7 +33,23 @@ export class FavoritesPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFavorite();
+      this.favoriteService.getAllFavorites().subscribe(
+        (response: any) => {
+          const favoriteIds = response.data.map((favorite: Favorite) => favorite.property_id);
+          this.propertiesService.getProperties().subscribe(
+            (response: any) => {
+              this.favorites = response.data.filter((property: Property) => favoriteIds.includes(property.id));
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+
     this.userName = this.authService.getUserName() ?? '';
   }
 

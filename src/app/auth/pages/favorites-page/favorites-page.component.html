@@ -5,7 +5,7 @@
   <h2 *ngIf="favorites.length === 0">Aún no tienes casas favoritas</h2>
 
   <div class="house-list">
-    <app-properties [properties]="favorites"></app-properties>
+    <app-properties *ngIf="favorites.length > 0" [properties]="favorites"></app-properties>
   </div>
 
 </div>
