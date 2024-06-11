@@ -20,9 +20,9 @@ export class FavoriteService {
   return this.http.get<Favorites[]>(url);
 }
 
-addFavorite(property_id: number,):Observable<Favorites[]> {
+addFavorite(id: number,):Observable<Favorites[]> {
   const url = `${this.baseUrl}/favorite`;
-  const body = { property_id };
+  const body = { "property_id": id };
   return this.http.post<Favorites[]>(url, body);
 }
 
