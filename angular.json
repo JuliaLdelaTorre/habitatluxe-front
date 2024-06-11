@@ -22,7 +22,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "localize":["es"],
-            "outputPath": "dist/habitatluxe-front",
+            "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -40,8 +40,9 @@
               ],
 
             "scripts": [
-              "node_modules/animejs/lib/anime.min.js" 
-            ]
+              "node_modules/animejs/lib/anime.min.js"
+            ],
+            "baseHref": "habitatluxe-front"
           },
           "configurations": {
             "production": {
@@ -49,12 +50,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "10.28kb"
+                  "maximumWarning": "100kb",
+                  "maximumError": "200kb"
                 }
               ],
               "outputHashing": "all"
