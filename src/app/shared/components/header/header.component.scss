@@ -1,0 +1,76 @@
+@import '/src/styles/sass/home.scss';
+@import '/src/styles/sass/header';
+
+#nav-header{
+
+  .light-mode {
+    background-color: #666666dc;
+    transition: 1s;
+  }
+}
+
+#sun {
+  display: none;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+#profile svg {
+  cursor: pointer;
+}
+.dropdown-button {
+  color: $background-color_2;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px 5px 5px 5px;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 942px) {
+  .dropdown-content {
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+}
+
+@media (min-width: 942px) and (max-width: 1000px) {
+  .div-flex {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width:942px) {
+  .div-flex {
+    flex-wrap: wrap;
+  }
+}
