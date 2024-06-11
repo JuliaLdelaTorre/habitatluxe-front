@@ -1,15 +1,4 @@
-<!-- header -->
-<header class="nosotros__header">
-  <img class="nosotros__logo" src="../../assets/images/logo.svg" alt="Logo" i18n-alt>
-
-  <nav class="nosotros__nav" role="navigation">
-    <a routerLink="/" i18n="@@inicioLink">Inicio</a>
-    <a routerLink="/properties" i18n="@@anunciosLink">Anuncios</a>
-    <a routerLink="/blog" i18n="@@blogLink">Blog</a>
-    <a routerLink="/aboutUs" i18n="@@nosotrosLink">Nosotros</a>
-    <a routerLink="/contact" i18n="@@contactoLink">Contacto</a>
-  </nav>
-</header>
+<shared-header></shared-header>
 
 <!-- main -->
 <main>
@@ -68,14 +57,6 @@
     </div> <!-- nosotros -->
   </div>
 
-  <footer class="">
-    <nav class="nosotros__nav" role="navigation">
-      <a routerLink="/properties" i18n="@@anunciosLink">Anuncios</a>
-      <a routerLink="/blog" i18n="@@blogLink">Blog</a>
-      <a routerLink="/aboutUs" i18n="@@nosotrosLink">Nosotros</a>
-      <a routerLink="/contact" i18n="@@contactoLink">Contacto</a>
-    </nav>
-
-    <div class="footer__parag" i18n="@@footerText">Habitat Luxe "Encuentra tu espacio ideal"</div>
-  </footer>
+  <shared-footer></shared-footer>
+ 
 </main>

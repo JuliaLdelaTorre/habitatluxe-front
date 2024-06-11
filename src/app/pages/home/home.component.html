@@ -14,7 +14,8 @@
 </head>
 
 <body>
-  <nav id="nav-header" class="nav-header">
+  <shared-header></shared-header>
+  <!-- <nav id="nav-header" class="nav-header">
     <div id="container" class="nav-header__container" [ngClass]="{'light-mode': lightMode, 'nav-header__container--expanded': crossActive}">
       <div id="divName" class="nav-header__container__div-name">
         <div id="svg-container" class="nav-header__container__div-name__svg-container">
@@ -64,14 +65,14 @@
               <li><a (click)="logout()"><i class="fas fa-sign-out-alt mr-2 text-lg"></i>Cerrar sesión</a></li>
             </ul>
           </div>
-          <button (click)="togglelightMode()">
+          <button (click)="toggleLightMode()">
             <img id="moon" #moon src="./../assets/images/dark-mode.svg" width="30">
             <img id="sun" #sun src="./../assets/images/light-mode.svg" width="30">
           </button>
         </div>
       </div>
     </div>
-  </nav>  
+  </nav> -->
   <div id="backgroundOne">
     <div id="container2">
       <div>
@@ -229,8 +230,9 @@
     </div>
   </main>
 
+  <shared-footer></shared-footer>
   <!--FOOTERRR-->
-  <footer>
+  <!-- <footer>
     <nav id="nav-footer" class="nav-footer" [ngClass]="{'light-mode': lightMode}">
       <div id="socialNetworks">
         <div>
@@ -255,5 +257,5 @@
             ideal"</span></p>
       </div>
     </nav>
-  </footer>
+  </footer> -->
 </body>

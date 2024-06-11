@@ -2,13 +2,7 @@
 @import '../../../styles/sass/home';
 @import '../../../styles/sass/footer';
 
-#nav-header{
 
-  .light-mode {
-    background-color: #666666dc;
-    transition: 1s;
-  }
-}
 html, body {
   height: auto;
   margin: 0;
@@ -38,15 +32,9 @@ main {
         }
       }
     }
-  } 
-}
-
-footer {
-  .light-mode {
-    background-color: #666666dc;
-    transition: 1s;
   }
 }
+
 img, video, svg {
   display: flex;
   margin: auto;

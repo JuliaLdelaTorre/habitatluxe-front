@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, AfterViewInit, HostListener, ViewChild }
 import anime from 'animejs/lib/anime.es.js';
 import { of, Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-home',
@@ -10,27 +11,37 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  isAuthenticated$ = this.authService.isAuthenticated$;
-  currentUser$ = this.authService.currentUser$;
-  public userName: string | null = null;
+  // isAuthenticated$ = this.authService.isAuthenticated$;
+  // currentUser$ = this.authService.currentUser$;
+  // public userName: string | null = null;
 
-  constructor(private elementRef: ElementRef,private authService: AuthService ) {
-    this.lightModeSubject = new Subject<boolean>();
+  lightMode: boolean = true;
+  lightModeSubject!: Subject<boolean>;
+
+  constructor(
+    private elementRef: ElementRef,
+    private authService: AuthService,
+    private themeService: ThemeService
+  ) {
+    this.themeService.lightModeSubject.subscribe( value => {
+      this.lightMode = value;
+    })
   }
 
   crossActive: boolean = false;
 
-  lightMode: boolean = true;
-  lightModeSubject: Subject<boolean>;
-
   ngOnInit(): void {
     this.adjustAccordingToScreenSize();
-    this.userName = this.authService.getUserName();
+    // this.userName = this.authService.getUserName();
   }
 
-  logout() {
-    this.authService.logout();
+  toggleLightMode(): void {
+    this.themeService.toggleLightMode();
   }
+
+  // logout() {
+  //   this.authService.logout();
+  // }
 
 
   ngAfterViewInit(): void {
@@ -174,18 +185,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  @ViewChild('moon') moonImg!: ElementRef;
-  @ViewChild('sun') sunImg!: ElementRef;
+  // @ViewChild('moon') moonImg!: ElementRef;
+  // @ViewChild('sun') sunImg!: ElementRef;
 
-  togglelightMode(): void {
-    this.lightMode = !this.lightMode;
-    this.lightModeSubject.next(this.lightMode);
-     if(this.lightMode) {
-        this.moonImg.nativeElement.style.display = 'block';
-        this.sunImg.nativeElement.style.display = 'none';
-      } else {
-        this.moonImg.nativeElement.style.display = 'none';
-        this.sunImg.nativeElement.style.display = 'block';
-      }
-  }
+  // togglelightMode(): void {
+  //   this.lightMode = !this.lightMode;
+  //   this.lightModeSubject.next(this.lightMode);
+  //    if(this.lightMode) {
+  //       this.moonImg.nativeElement.style.display = 'block';
+  //       this.sunImg.nativeElement.style.display = 'none';
+  //     } else {
+  //       this.moonImg.nativeElement.style.display = 'none';
+  //       this.sunImg.nativeElement.style.display = 'block';
+  //     }
+  // }
 }
