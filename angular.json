@@ -41,8 +41,7 @@
 
             "scripts": [
               "node_modules/animejs/lib/anime.min.js"
-            ],
-            "baseHref": "habitatluxe-front"
+            ]
           },
           "configurations": {
             "production": {
