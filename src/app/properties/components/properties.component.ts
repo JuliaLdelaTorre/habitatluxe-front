@@ -7,11 +7,13 @@ import { User } from '../../auth/interfaces/loginResponse.interface';
 import { set } from 'animejs';
 import { Favorite } from '../interface/favorite.interface';
 import { FavoriteService } from 'src/app/auth/services/favorite.service';
+import { Subject } from 'rxjs';
+import { ThemeService } from 'src/app/pages/home/theme.service';
 
 @Component({
   selector: 'app-properties',
   templateUrl: './properties.component.html',
-  styleUrls: ['./properties.component.css']
+  styleUrls: ['./properties.component.scss']
 })
 export class PropertiesComponent {
   @Input() properties: Property[] = [];
@@ -21,12 +23,20 @@ export class PropertiesComponent {
   public totalPages: number = 10;
   public showMore: boolean = false;
 
+  lightMode: boolean = true;
+  lightModeSubject!: Subject<boolean>;
+
 
   constructor(
     private propertiesService: PropertiesService,
     private favoriteService: FavoriteService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private themeService: ThemeService,
+  ) { 
+    this.themeService.lightModeSubject.subscribe( value => {
+      this.lightMode = value;
+    })
+  }
 
 
   ngOnInit(): void {

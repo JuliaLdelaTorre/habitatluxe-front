@@ -1,13 +1,11 @@
 <div class="container relative px-2 pt-4 mx-auto mb-12">
-
-
   <body class="font-sans flex justify-center items-center pt-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
       <div class="w-full flex flex-cols "
         *ngFor="let property of properties | slice:((currentPage-1)*pageSize):(currentPage*pageSize)">
         <div (click)="goToPropertyDetails(property.id)"
-          class="w-full py-6 px-6 flex-grow hover:bg-gray-200 hover:shadow-sm transition duration-200 ease-in-out">
-          <div class="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col">
+          class="w-full py-6 px-6 flex-grow hover:bg-gray-200 hover:shadow-sm transition duration-200 ease-in-out" [ngClass]="{'light-background-hover': lightMode}">
+          <div class="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col cursor-pointer">
             <div class="bg-cover bg-center h-56 p-4" [style.background-image]="'url(' + property.img + ')'">
               <div class="flex justify-end">
                 <!-- Icono corazón -->
@@ -66,7 +64,7 @@
         </div>
       </div>
       <!-- botones -->
-      <div class="absolute -bottom-16 w-full flex bg-white">
+      <div class="absolute -bottom-16 w-full flex justify-center items-center bg-white mt-8 mb-8 bg-custom" [ngClass]="{'light-mode': lightMode}">
         <div *ngIf="totalPages > 1">
           <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"
             class="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4" i18n="@@previous">Anterior</button>

@@ -4,12 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { delay, switchMap } from 'rxjs';
 import { Property } from '../interface/property.interface';
 import { PropertyResponse } from '../interface/propertyResponse.interface';
+import { Subject } from 'rxjs';
+import { ThemeService } from 'src/app/pages/home/theme.service';
 
 @Component({
   selector: 'app-property-page',
   templateUrl: './property-page.component.html',
-  styles: [
-  ]
+  styleUrls: ['./property-page.component.scss'],
 })
 export class PropertyPageComponent implements OnInit {
 // cuando el componente se monta, hay un momento que no hay property, por eso sería nulo?.
@@ -17,12 +18,19 @@ export class PropertyPageComponent implements OnInit {
   public currentImageIndex: number = 0;
   public imageList: string[] = [];
 
+  lightMode: boolean = true;
+  lightModeSubject!: Subject<boolean>;
 
   constructor(
     private propertiesService: PropertiesService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private themeService: ThemeService,
+  ) { 
+    this.themeService.lightModeSubject.subscribe( value => {
+      this.lightMode = value;
+    })
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params

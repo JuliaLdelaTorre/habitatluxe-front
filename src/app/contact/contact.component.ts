@@ -3,13 +3,14 @@ import { ContactService } from './services/contact.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as valid from '../shared/validators/validators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { tap } from 'rxjs';
+import { Subject } from 'rxjs';
+import { ThemeService } from 'src/app/pages/home/theme.service';
 
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styles: []
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
 
@@ -17,12 +18,19 @@ export class ContactComponent {
   @ViewChild('successForm') successForm!: TemplateRef<any>
   @ViewChild('failForm') failForm!: TemplateRef<any>
 
+  lightMode: boolean = true;
+  lightModeSubject!: Subject<boolean>;
+
   constructor(
      private contactService: ContactService,
      private fb: FormBuilder,
      public dialog: MatDialog,
-
-    ) { }
+     private themeService: ThemeService,
+    ) { 
+      this.themeService.lightModeSubject.subscribe( value => {
+        this.lightMode = value;
+      })
+    }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({

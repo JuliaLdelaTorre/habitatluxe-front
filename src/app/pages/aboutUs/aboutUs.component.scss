@@ -44,6 +44,7 @@ header {
 
 .nosotros {
   background-color: $primary;
+  min-height: 100vh;
   &__title {
     @include section-title;
     color: $secondary;

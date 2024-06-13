@@ -3,5 +3,5 @@ module.exports = {
     './src/**/*.html',
     './src/**/*.ts',
   ],
-  // Otras configuraciones...
+    // Otras configuraciones...
 };

@@ -6,12 +6,13 @@ import { User } from '../../auth/interfaces/loginResponse.interface';
 import { set } from 'animejs';
 import { Favorite } from '../interface/favorite.interface';
 import { FavoriteService } from 'src/app/auth/services/favorite.service';
+import { Subject } from 'rxjs';
+import { ThemeService } from 'src/app/pages/home/theme.service';
 
 @Component({
   selector: 'app-list-page',
   templateUrl: './list-page.component.html',
-  styles: [
-  ]
+  styleUrls: ['./list-page.component.scss'],
 })
 export class ListPageComponent implements OnInit {
 
@@ -23,12 +24,20 @@ export class ListPageComponent implements OnInit {
   public totalPages: number = 10;
   public showMore: boolean = false;
 
+  lightMode: boolean = true;
+  lightModeSubject!: Subject<boolean>;
 
   constructor(
     private propertiesService: PropertiesService,
     private favoriteService: FavoriteService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private themeService: ThemeService,
+  ) { 
+    this.themeService.lightModeSubject.subscribe( value => {
+      this.lightMode = value;
+    })
+
+  }
 
 
   ngOnInit(): void {

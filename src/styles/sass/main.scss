@@ -65,3 +65,25 @@ main, p{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-custom {
+  background-color: $background-color_1;
+  transition: 1s;
+}
+
+
+.light-mode {
+background-color: $primary;
+transition: 1s;
+}
+
+.light-text {
+color: #1a1a1a;
+transition: color 1s;
+}
+
+.light-text-grey{
+  color: $color_1-1;
+  transition: color 1s;
+  }
+  

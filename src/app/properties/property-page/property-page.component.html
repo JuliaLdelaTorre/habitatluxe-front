@@ -1,9 +1,9 @@
 <shared-header></shared-header>
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 bg-custom" [ngClass]="{'light-mode': lightMode}">
   <div class="text-4xl text-center text-gray-900 my-4">{{property?.property_name}}</div>
   <!-- carrusel -->
   <div class="flex justify-center items-center md:flex-row flex-col-reverse mt-10 gap-8">
-    <div class="md:w-[70%] w-full">
+    <div class="md:w-[70%]">
       <div class="relative image-viewer mb-8">
         <img class="w-full md:h-[420px] object-cover" [src]="imageList[currentImageIndex]" alt="Image">
         <button class="absolute left-5 top-1/2 hover:scale-125 transition-all ease-in-out duration-300"
