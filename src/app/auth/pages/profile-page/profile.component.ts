@@ -7,8 +7,8 @@ import * as validators from '../../../shared/validators/validators';
 import { phone } from '../../../shared/validators/validators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
-
+import { AuthService } from '../../services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'auth-profile',
@@ -17,16 +17,17 @@ import { Router } from '@angular/router';
 })
 export class ProfilePageComponent implements OnInit {
 
-  public profile: Profile | null = null;
+  // public profile?: Profile | null = null;
+  profile: any;
+  userId: any;
   public activeTemplate: string = 'personalData';
   public profileForm: FormGroup = this.fb.group({});
   public passwordErrorMessage: string | null = null;
-  public password_confirmationErrorMessage: string | null = null;
-  @ViewChild('successUpdate') successRegister!: TemplateRef<any>;
-  @ViewChild('failUpdate') failRegister!: TemplateRef<any>;
+  public password2ErrorMessage: string | null = null;
+  @ViewChild('successUpdate') successUpdate!: TemplateRef<any>;
+  @ViewChild('failUpdate') failUpdate!: TemplateRef<any>;
   @ViewChild('successDelete') successDelete!: TemplateRef<any>;
   @ViewChild('failDelete') failDelete!: TemplateRef<any>;
-
 
 
   constructor(
@@ -34,17 +35,19 @@ export class ProfilePageComponent implements OnInit {
     private fb: FormBuilder,
     private validatorsService: ValidatorsService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
     this.profileForm = this.fb.group({
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern(validators.email)]],
-      phone: ['', [Validators.required, Validators.pattern(validators.phone)]],
-      currentPassword: ['', [Validators.required, Validators.pattern(validators.password)]],
-      password: ['', [Validators.required, Validators.pattern(validators.password)]],
-      password2: ['', [Validators.required, Validators.pattern(validators.password)]],
+      username: ['',],
+      email: ['', Validators.pattern(validators.email)],
+      phone: ['', Validators.pattern(validators.phone)],
+      currentPassword: ['', Validators.pattern(validators.password)],
+      password: ['', Validators.pattern(validators.password)],
+      password2: ['', Validators.pattern(validators.password)],
     });
 
     this.profileForm.controls['password'].valueChanges.subscribe(() => {
@@ -52,35 +55,38 @@ export class ProfilePageComponent implements OnInit {
     });
 
     this.profileForm.controls['password2'].valueChanges.subscribe(() => {
-      this.password_confirmationErrorMessage = this.validatorsService.isValidPassField(this.profileForm, 'password2');
+      this.password2ErrorMessage = this.validatorsService.isValidPassField(this.profileForm, 'password2');
     });
 
-// Muestro los valores actuales del usuario.
+    // Muestro los valores actuales del usuario.
     this.loadProfileData();
 
 
   } // ngOnInit
 
-  public loadProfileData():void {
-  this.profileService.getProfile().subscribe(
-    (response: any) => {
-      if (response.message === 'userProfile OK' && response.userData) {
-        const userProfile = response.userData;
-        console.log(userProfile);
-        this.profileForm.patchValue({
-          username: userProfile.username,
-          email: userProfile.email,
-          phone: userProfile.phone // Asegúrate de ajustar según la estructura real
-        });
-      } else {
-        console.error('Error: Respuesta del servidor incorrecta');
+  public loadProfileData(): void {
+    this.profileService.getProfile().subscribe(
+      (response: any) => {
+        if (response.message === 'userProfile OK' && response.userData) {
+          const profile = response.userData;
+          console.log('perfil del usuario:', profile);
+          this.profile = profile;
+          this.userId = profile.id;
+          console.log('id de usuario desde load profile:', this.userId);
+          this.profileForm.patchValue({
+            username: profile.username,
+            email: profile.email,
+            phone: profile.phone
+          });
+        } else {
+          console.error('Error: Respuesta del servidor incorrecta');
+        }
+      },
+      (error) => {
+        console.error('Error al obtener el perfil del usuario:', error);
       }
-    },
-    (error) => {
-      console.error('Error al obtener el perfil del usuario:', error);
-    }
-  );
-}
+    );
+  }
 
   // templates.
   showTemplate(template: string) {
@@ -100,44 +106,76 @@ export class ProfilePageComponent implements OnInit {
   }
 
   onSubmitUpdate() {
-    if (this.profileForm.valid) {
-      if (this.profile && this.profile.user_id) {
+
+    // Comprueba la validez del formulario
+    if (!this.profileForm.valid) {
+      console.log('Formulario inválido');
+      console.log('Errores de validación:', this.profileForm.errors);
+
+      // Recorre los controles del formulario e imprime los errores individuales
+      Object.keys(this.profileForm.controls).forEach(key => {
+        const controlErrors = this.profileForm.get(key)?.errors;
+        if (controlErrors != null) {
+          console.log('Errores en el control', key, ':', controlErrors);
+        }
+      });
+
+      return; // Sale del método si el formulario es inválido
+    }
+
+    if (this.profile && this.profileForm.valid) {
+      console.log('Datos enviados:', this.profileForm.value);
       const updatedProfile = {
         ...this.profile,
         ...this.profileForm.value
       };
+      const password = this.profileForm.value.password;
+      const password2 = this.profileForm.value.password2;
+
+      if (password !== password2) {
+        this.passwordErrorMessage = 'Las contraseñas no coinciden';
+        return;
+      }
+      this.passwordErrorMessage = null;
 
       this.profileService.updateProfile(updatedProfile)
         .subscribe(
           (response: Profile) => {
-            this.dialog.open(this.successRegister);
             this.profile = response;
+            this.dialog.open(this.successUpdate);
+            this.profileForm.reset();
           },
           (error: any) => {
-            this.dialog.open(this.failRegister);
+            console.error('Error al actualizar el perfil:', error);
+            this.dialog.open(this.failUpdate);
           }
         );
-      }
     }
   }
 
   onDeleteAccount(): void {
-    if (confirm('¿Estás seguro/a de que quieres borrar tu cuenta?')) {
-      const userId = this.profile?.user_id;
-      if (userId !== undefined) {
-        this.profileService.deleteProfile(userId).subscribe(
+    if (confirm('¿Estás seguro de que quieres eliminar tu cuenta?')) {
+      if (!this.profile) {
+        console.error('El perfil no está definido');
+        return;
+      }
+      if (this.userId !== undefined) {
+        this.profileService.deleteProfile(this.userId).subscribe(
           () => {
             console.log('Cuenta eliminada');
-            // Puedes añadir lógica adicional si es necesario, como redirigir al usuario a otra página
+            this.dialog.open(this.successDelete);
+            this.authService.logout();
+            if (this.cookieService.check('remember_token')) {
+              this.cookieService.delete('remeber_token');
+            }
           },
           (error) => {
             console.error('Error al eliminar la cuenta', error);
-            // Manejar el error apropiadamente, por ejemplo, mostrar un mensaje de error al usuario
+            this.dialog.open(this.failDelete);
           }
         );
       }
     }
   }
-
 
 } //

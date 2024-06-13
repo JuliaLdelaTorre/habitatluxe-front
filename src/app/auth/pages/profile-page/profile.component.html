@@ -69,6 +69,12 @@
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Correo electrónico</label>
             <div class="mt-2">
               <input id="email" type="email" formControlName="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <div *ngIf="profileForm.get('email')?.touched && (!profileForm.get('email')?.value)"><small
+                class="text-red-500">El email es requerido</small></div>
+            <div
+              *ngIf="profileForm.get('email')?.errors && profileForm.get('email')?.touched && profileForm.get('email')?.errors?.['pattern']">
+              <small class="text-red-500">El formato del email no es correcto</small>
+            </div>
             </div>
           </div>
         </div>
@@ -295,3 +301,4 @@
       </div>
     </div>
   </ng-template>
+

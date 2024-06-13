@@ -6,7 +6,7 @@ export interface Profile {
   phone?:           string;
   currentPassword?: string;
   password?:        string;
-  user_id:          number;
+  id:          number;
   user?:             User;
 
 }

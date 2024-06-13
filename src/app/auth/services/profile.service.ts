@@ -18,13 +18,15 @@ export class ProfileService {
   }
 
   updateProfile(updatedProfile: Profile): Observable<Profile> {
-    const url = `${this.baseUrl}/users/${updatedProfile.user_id}`;
+    const url = `${this.baseUrl}/users/${updatedProfile.id}`;
     console.log('datos enviados del perfil actualizado:', updatedProfile)
+    console.log('id de usuario:', updatedProfile.id);
     return this.http.put<Profile>(url, updatedProfile);
   }
 
   deleteProfile(userId: number): Observable<any> {
-    const url = `${this.baseUrl}/users${userId}`;
+    console.log('id de usuario para borrar:', userId)
+    const url = `${this.baseUrl}/users/${userId}`;
     return this.http.delete(url);
   }
 
