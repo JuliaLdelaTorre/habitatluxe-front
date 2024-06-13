@@ -9,6 +9,7 @@ import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.co
 import { AppointmentPageComponent } from './pages/appointment-page/appointment-page.component';
 import { PropertiesModule } from "../properties/properties.module";
 import { AdminComponent } from './pages/admin/admin.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -26,6 +27,7 @@ import { AdminComponent } from './pages/admin/admin.component';
         CommonModule,
         ReactiveFormsModule,
         AuthRoutingModule,
+        SharedModule,
         PropertiesModule
     ]
 })

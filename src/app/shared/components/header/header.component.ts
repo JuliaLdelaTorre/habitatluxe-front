@@ -4,6 +4,7 @@ import anime from 'animejs/lib/anime.es.js';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ThemeService } from 'src/app/pages/home/theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-header',
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   constructor(
     private elementRef: ElementRef,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.themeService.lightModeSubject.subscribe( value => {
       this.lightMode = value;
@@ -37,9 +39,25 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.userName = this.authService.getUserName();
   }
 
+
+  @ViewChild('moon') moonImg!: ElementRef;
+  @ViewChild('sun') sunImg!: ElementRef;
+
   toggleLightMode(): void {
-    this.themeService.toggleLightMode();
+    let valor =this.themeService.toggleLightMode();
+    if(valor) {
+      this.moonImg.nativeElement.style.display = 'block';
+      this.sunImg.nativeElement.style.display = 'none';
+    } else {
+      this.moonImg.nativeElement.style.display = 'none';
+      this.sunImg.nativeElement.style.display = 'block';
+    }
   }
+
+  backHome(){
+    this.router.navigate(['/home']);
+  }
+
 
   logout() {
     this.authService.logout();
@@ -183,6 +201,5 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       if (event.key === "Escape" && this.crossActive) {
         this.pressCross();
       }
-    }
-
-}//
+  }
+}

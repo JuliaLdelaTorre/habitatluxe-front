@@ -14,18 +14,9 @@ export class ThemeService {
   @ViewChild('sun') sunImg!: ElementRef;
 
   // activar/desactivar el modo claro.
-  toggleLightMode(): void {
+  toggleLightMode(): boolean {
     this._lightMode = !this._lightMode;
     this.lightModeSubject.next(this._lightMode);
-     if(this._lightMode) {
-        this.moonImg.nativeElement.style.display = 'block';
-        this.sunImg.nativeElement.style.display = 'none';
-      } else {
-        this.moonImg.nativeElement.style.display = 'none';
-        this.sunImg.nativeElement.style.display = 'block';
-      }
+    return this._lightMode;
   }
-
- 
-
 }

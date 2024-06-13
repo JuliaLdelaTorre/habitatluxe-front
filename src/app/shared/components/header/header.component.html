@@ -3,6 +3,7 @@
   <div id="container" class="nav-header__container" [ngClass]="{'light-mode': lightMode, 'nav-header__container--expanded': crossActive}">
     <div id="divName" class="nav-header__container__div-name">
       <div id="svg-container" class="nav-header__container__div-name__svg-container">
+        <div  (click)="backHome()" class="nav-header__container__div-name__svg-container__backHome"></div>
         <object id="objectSVG" #objectSVG type="image/svg+xml" data="./../assets/images/logoAnimado.svg" width="450"></object>
       </div>
     </div>
