@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 
+  goAdmin() {
+    window.location.href = "https://habitatluxeadmin.duckdns.org";
+  }
 }
