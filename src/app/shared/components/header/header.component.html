@@ -35,7 +35,7 @@
           <a routerLink="/contact" class="nav-header__container__list__container__item__link link">Contacto</a>
           <div class="nav-header__container__list__container__item__bar nav-header__container__list__container__item__bar--right barra2"></div>
         </div>
-        <div *ngIf="(isAuthenticated$ | async)" style="color: #090B0F; font-size: 1.5em;">Hola, {{userName}}</div>
+        <div *ngIf="(isAuthenticated$ | async)" style="color: white; text-align: center; font-size: 1.5em;">Hola, {{userName}}</div>
         <div class="dropdown nav-header__container__list__container__item__dropdown">
           <button class="dropdown-button">
             <object id="profile" type="image/svg+xml" data="./../assets/images/user.svg" width="80"></object>

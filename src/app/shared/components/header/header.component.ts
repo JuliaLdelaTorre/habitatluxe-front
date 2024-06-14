@@ -1,58 +1,64 @@
 
-import { AfterViewInit, Component, HostListener, OnInit, ViewChild, ElementRef } from '@angular/core';
-import anime from 'animejs/lib/anime.es.js';
-import { Subject } from 'rxjs';
-import { AuthService } from 'src/app/auth/services/auth.service';
-import { ThemeService } from 'src/app/pages/home/theme.service';
-import { Router } from '@angular/router';
+  import { AfterViewInit, Component, HostListener, OnInit, ViewChild, ElementRef } from '@angular/core';
+  import anime from 'animejs/lib/anime.es.js';
+  import { Subject } from 'rxjs';
+  import { AuthService } from 'src/app/auth/services/auth.service';
+  import { ThemeService } from 'src/app/pages/home/theme.service';
+  import { Router } from '@angular/router';
 
-@Component({
-  selector: 'shared-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
-})
-export class HeaderComponent implements OnInit, AfterViewInit {
+  @Component({
+    selector: 'shared-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
+  })
+  export class HeaderComponent implements OnInit, AfterViewInit {
 
-  isAuthenticated$ = this.authService.isAuthenticated$;
-  currentUser$ = this.authService.currentUser$;
-  public userName: string | null = null;
+    isAuthenticated$ = this.authService.isAuthenticated$;
+    currentUser$ = this.authService.currentUser$;
+    public userName: string | null = null;
 
-  lightMode: boolean = true;
-  lightModeSubject!: Subject<boolean>;
-
-
-  constructor(
-    private elementRef: ElementRef,
-    private themeService: ThemeService,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.themeService.lightModeSubject.subscribe( value => {
-      this.lightMode = value;
-    })
-  }
-
-  crossActive: boolean = false;
-
-  ngOnInit(): void {
-    this.adjustAccordingToScreenSize();
-    this.userName = this.authService.getUserName();
-  }
+    lightMode: boolean = true;
+    lightModeSubject!: Subject<boolean>;
 
 
-  @ViewChild('moon') moonImg!: ElementRef;
-  @ViewChild('sun') sunImg!: ElementRef;
-
-  toggleLightMode(): void {
-    let valor =this.themeService.toggleLightMode();
-    if(valor) {
-      this.moonImg.nativeElement.style.display = 'block';
-      this.sunImg.nativeElement.style.display = 'none';
-    } else {
-      this.moonImg.nativeElement.style.display = 'none';
-      this.sunImg.nativeElement.style.display = 'block';
+    constructor(
+      private elementRef: ElementRef,
+      private themeService: ThemeService,
+      private authService: AuthService,
+      private router: Router
+    ) {
+      this.lightModeSubject = this.themeService.lightModeSubject;
+      this.lightMode = this.themeService.lightMode;
     }
-  }
+
+    crossActive: boolean = false;
+
+    ngOnInit(): void {
+      this.adjustAccordingToScreenSize();
+      this.userName = this.authService.getUserName();
+      
+      this.lightMode = this.themeService.lightMode;
+    }
+
+
+    @ViewChild('moon') moonImg!: ElementRef;
+    @ViewChild('sun') sunImg!: ElementRef;
+
+    toggleLightMode(): void {
+      this.themeService.toggleLightMode();
+    }
+  
+    updateLogo(): void {
+      if (this.lightMode) {
+        this.moonImg.nativeElement.style.display = 'block';
+        this.sunImg.nativeElement.style.display = 'none';
+      } else {
+        this.moonImg.nativeElement.style.display = 'none';
+        this.sunImg.nativeElement.style.display = 'block';
+      }
+    }
+  
+
 
   backHome(){
     this.router.navigate(['/home']);
@@ -64,9 +70,17 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initializeAnimation();
+    this.initializeAnimation(); 
+    this.lightModeSubject = this.themeService.lightModeSubject;
+    this.lightModeSubject.subscribe(value => {
+       this.lightMode = value;
+       this.updateLogo();
+    });
+    
+    this.updateLogo();
   }
 
+  
     private initializeAnimation(): void {
       const objectSVG = this.elementRef.nativeElement.querySelector('#objectSVG');
       objectSVG.addEventListener('load', () => {

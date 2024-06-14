@@ -160,6 +160,9 @@
         align-items: center;
         position: relative;
         min-height: 500px;
+        justify-content: space-around;
+        max-height: 100vh;
+        min-height: 60vh;
 
         &__item {
           width: 100%;
