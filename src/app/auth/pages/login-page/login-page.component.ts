@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { LoginResponse } from '../../interfaces/loginResponse.interface';
 import { ValidatorsService } from 'src/app/shared/validators/validators.service';
 import { environment } from 'src/app/environments/environments';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginData } from '../../interfaces/loginData.interface';
 import { CookieService } from 'ngx-cookie-service';
@@ -50,7 +50,8 @@ export class LoginPageComponent implements OnInit {
     const rememberToken = this.cookieService.get('remember_token');
     console.log(rememberToken);
     if (!rememberToken) {
-      console.log('No hay token en la cookie');}
+      console.log('No hay token en la cookie');
+    }
 
     this.getRememberEmails();
     this.autoLogin();
@@ -58,6 +59,8 @@ export class LoginPageComponent implements OnInit {
     this.loginForm.controls['password'].valueChanges.subscribe(() => {
       this.passwordErrorMessage = this.validatorsService.isValidPassField(this.loginForm, 'password');
     });
+
+
   }
 
   onBlur(): void {
@@ -99,32 +102,57 @@ export class LoginPageComponent implements OnInit {
         (resp: LoginResponse) => {
           const userType = this.authService.getUserType();
           console.log('usertype: ', userType);
-          if ( userType === 'admin') {
+          if (userType === 'admin') {
             this.router.navigate(['/auth/admin']);
-          } else if ( userType === 'normal_user') {
+          } else if (userType === 'normal_user') {
             this.router.navigate(['/home']);
-          } else if ( userType === 'seller_user') {
+          } else if (userType === 'seller_user') {
             this.router.navigate(['/home']); // Cambiar a la ruta de vendedor.
           } else {
             this.router.navigate(['/home']);
           }
-          
+
         },
         (error: HttpErrorResponse) => {
           console.error(error);
           let errorMessage = 'Ha ocurrido un error desconocido';
           if (error.status === 0) {
             errorMessage = 'No se pudo conectar con el servidor';
-            this.dialog.open(this.errorServer);
+            this.openDialogErrorServer();
           } else if (error.status === 401) {
             errorMessage = 'Credenciales incorrectas';
-            this.dialog.open(this.failLogin);
+            this.openDialogFailLogin();
           }
         }
       );
     }
   }
+
+  rememberEmail(email: string): void {
+    this.loginForm.patchValue({
+      email: email,
+      remember: true
+    });
+  }
+
+  // abrir dialogo de error
+  openDialogFailLogin(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    this.dialog.open(this.failLogin, dialogConfig);
+  }
+
+  // abrir dialogo de error de servidor
+  openDialogErrorServer(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    this.dialog.open(this.errorServer, dialogConfig);
+  }
+
+
 }
+
+
 
 
 

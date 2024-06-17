@@ -10,10 +10,19 @@ import { Favorites } from "src/app/auth/interfaces/favorites.interface";
   providedIn: 'root'
 })
 export class FavoriteService {
-
+ 
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   private readonly baseUrl: string = environment.baseUrl;
+  private favorites: { [id: number]: boolean } = {};
+
+  setFavoriteStatus(id: number, isFavorite: boolean) {
+    this.favorites[id] = isFavorite;
+  }
+
+  getFavoriteStatus(id: number): boolean {
+    return this.favorites[id] ?? false;
+  }
 
  getAllFavorites():Observable<Favorites[]> {
   const url = `${this.baseUrl}/favorite`;

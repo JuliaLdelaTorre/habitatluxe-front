@@ -15,13 +15,14 @@ import { ThemeService } from 'src/app/pages/home/theme.service';
   templateUrl: './properties.component.html',
   styleUrls: ['./properties.component.scss']
 })
-export class PropertiesComponent {
+export class PropertiesComponent implements OnInit {
   @Input() properties: Property[] = [];
-  public favorites: Favorite[] = [];
+  public favorites: { [key: number]: boolean } = {};
   public currentPage: number = 1;
   public pageSize: number = 3;
   public totalPages: number = 10;
   public showMore: boolean = false;
+  public isLiked = false;
 
   lightMode: boolean = true;
   lightModeSubject!: Subject<boolean>;
@@ -32,24 +33,26 @@ export class PropertiesComponent {
     private favoriteService: FavoriteService,
     private router: Router,
     private themeService: ThemeService,
-  ) { 
-    this.themeService.lightModeSubject.subscribe( value => {
+  ) {
+    this.themeService.lightModeSubject.subscribe(value => {
       this.lightMode = value;
     })
   }
 
 
   ngOnInit(): void {
-    this.propertiesService.getProperties()
-      .subscribe( (response:any) => {
+    this.favoriteService.getAllFavorites().subscribe(() => {
+      this.propertiesService.getProperties().subscribe((response: any) => {
         this.properties = response.data;
         this.properties = this.properties.map(property => ({
-          ...property, showMore: false
-        }))
+          ...property,
+          showMore: false,
+          isLiked: this.favoriteService.getFavoriteStatus(property.id)
+        }));
         this.totalPages = Math.ceil(this.properties.length / this.pageSize);
       });
+    });
   }
-
 
   changePage(newPage: number) {
     this.currentPage = newPage;
@@ -61,65 +64,49 @@ export class PropertiesComponent {
 
   public toggleShowMore(event: Event, property: Property): void {
     event.stopPropagation();
-   property.showMore = !property.showMore;
-    }
+    property.showMore = !property.showMore;
+  }
 
-
-  //TODO: Implementar la función save para guardar una propiedad como favorita.
-  // save(id: number):void {
-  //   event?.stopPropagation();
-  //   localStorage.setItem('property_id', id.toString());
-
-  //   const property_id = localStorage.getItem('property_id');
-  //   const user = localStorage.getItem('user');
-  //     if (user) {
-  //       const currentUser = JSON.parse(user);
-  //       const user_id = currentUser.id;
-  //       this.favoriteService.addFavorite(Number(property_id), user_id).subscribe(
-  //         (response: any) => {
-  //           console.log(response);
-  //           this.favorites = response.data;
-  //           console.log(this.favorites);
-  //         },
-  //         (error) => {
-  //           console.error(error);
-  //         }
-  //       );
-  //     }
-  //   }
-
-  save(id: number): void {
+ save(id: number): void {
   console.log('save method called with id:', id);
   event?.stopPropagation();
-  localStorage.setItem('property_id', id.toString());
 
-  const property_id = localStorage.getItem('property_id');
-  console.log('property_id:', property_id);
-
-  const user = localStorage.getItem('currentUser');
-  console.log('user:', user);
-
-  if (user) {
-    const currentUser = JSON.parse(user);
-    console.log('currentUser:', currentUser);
-
-    const user_id = currentUser.id;
-    console.log('user_id:', user_id);
-
-    this.favoriteService.addFavorite(Number(property_id)).subscribe(
+  const property = this.properties.find(property => property.id === id);
+  if (!property) {
+    console.error('Property not found');
+    return;
+  }
+  property.isLiked = !property.isLiked;
+  if (property.isLiked) {
+    this.favoriteService.addFavorite(property.id).subscribe(
       (response: any) => {
         console.log('addFavorite response:', response);
         this.favorites = response.data;
         console.log('favorites:', this.favorites);
+        this.favoriteService.setFavoriteStatus(property.id, true);
       },
       (error) => {
         console.error('addFavorite error:', error);
       }
     );
   } else {
-    console.log('No user found in localStorage');
+    this.favoriteService.deleteFavorite(property.id).subscribe(
+      (response: any) => {
+        console.log('removeFavorite response:', response);
+        if (Array.isArray(this.favorites)){
+        // Actualizar la lista de favoritos después de eliminar
+        this.favorites = this.favorites.filter(favorite => favorite.idFav !== property.id);
+        } else {
+          this.favorites = [];
+        }
+      },
+      (error) => {
+        console.error('removeFavorite error:', error);
+      }
+    );
   }
 }
+
 }
 
 

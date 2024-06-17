@@ -2,12 +2,14 @@
 <div class="container mx-auto min-h-screen">
   <h1>¡Bienvenido, {{userName}}!</h1>
 
-  <h2 *ngIf="favorites.length > 0">Tus casas favoritas</h2>
-  <h2 *ngIf="favorites.length === 0">Aún no tienes casas favoritas</h2>
+  <h2 *ngIf="favoritesLoaded && favorites.length > 0">Tus casas favoritas</h2>
+  <h2 *ngIf="favoritesLoaded && favorites.length === 0">Aún no tienes casas favoritas</h2>
 
-  <div class="house-list">
+  <div class="house-list" *ngIf="favoritesLoaded">
     <app-properties *ngIf="favorites.length > 0" [properties]="favorites"></app-properties>
   </div>
+
+  <div *ngIf="!favoritesLoaded">Cargando favoritos...</div>
 
 </div>
 

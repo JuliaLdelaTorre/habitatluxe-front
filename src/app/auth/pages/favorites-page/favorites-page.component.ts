@@ -7,6 +7,7 @@ import { FavoriteService } from '../../services/favorite.service';
 import { PropertiesService } from 'src/app/properties/services/properties.service';
 import { Property } from 'src/app/properties/interface/property.interface';
 import { Favorite } from 'src/app/properties/interface/favorite.interface';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'auth-favorites-page',
@@ -21,6 +22,7 @@ export class FavoritesPageComponent implements OnInit {
   public property_id: number = 0;
   public user_id: number =  0;
   public userName: string = '';
+  public favoritesLoaded: boolean = false;
   private readonly baseUrl: string = environment.baseUrl;
 
 
@@ -32,26 +34,34 @@ export class FavoritesPageComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {
-      this.favoriteService.getAllFavorites().subscribe(
-        (response: any) => {
-          const favoriteIds = response.data.map((favorite: Favorite) => favorite.property_id);
-          this.propertiesService.getProperties().subscribe(
-            (response: any) => {
-              this.favorites = response.data.filter((property: Property) => favoriteIds.includes(property.id));
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
 
-    this.userName = this.authService.getUserName() ?? '';
-  }
+
+ngOnInit(): void {
+  this.userName = this.authService.getUserName() ?? '';
+
+  this.favoriteService.getAllFavorites().subscribe((favoritesResponse: any) => {
+    if (favoritesResponse) {
+      const favorites = favoritesResponse.data;
+      const favoriteIds = favorites.map((favorite: Favorite) => favorite.property_id);
+
+      this.propertiesService.getProperties().subscribe((propertiesResponse: any) => {
+        if (propertiesResponse) {
+          this.favorites = propertiesResponse.data.filter((property: Property) => favoriteIds.includes(property.id));
+          this.favoritesLoaded = true;
+        } else {
+          console.error('propertiesResponse.data is undefined');
+        }
+      }, error => {
+        console.error('Error loading properties', error);
+      });
+    } else {
+      console.error('favoritesResponse.data is undefined');
+    }
+  }, error => {
+    console.error('Error loading favorites', error);
+  });
+}
+
 
   addFavorite() {
     this.favoriteService.addFavorite(this.property_id).subscribe(

@@ -12,5 +12,5 @@ export interface Property {
     created_at: string;
     updated_at: string | null;
     showMore: boolean;
-
+    isLiked: boolean;
 }
